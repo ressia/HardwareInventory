@@ -1,12 +1,15 @@
 package hwinventory.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TypeHardwareDevice implements Serializable {
 
 	private Long idType;
 	private CategoryHardwareDevice category;
 	private String nameType;
+	private Set devices = new HashSet();
 	
 	public TypeHardwareDevice() {
 	}
@@ -40,6 +43,14 @@ public class TypeHardwareDevice implements Serializable {
 		this.nameType = nameType;
 	}
 	
+	public Set getDevices() {
+		return devices;
+	}
+
+	public void setDevices(Set devices) {
+		this.devices = devices;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -71,5 +82,15 @@ public class TypeHardwareDevice implements Serializable {
 		} else if (!nameType.equals(other.nameType))
 			return false;
 		return true;
+	}
+	
+	public void addDevices(HardwareDevice aHardwareDevice) {
+		aHardwareDevice.setType(this);
+		devices.add(aHardwareDevice);
+	}
+
+	public void removeDevices(HardwareDevice aHardwareDevice) {
+		aHardwareDevice.setType(this);
+		devices.remove(aHardwareDevice);
 	}
 }

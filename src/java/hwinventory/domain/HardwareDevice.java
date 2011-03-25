@@ -11,15 +11,14 @@ public class HardwareDevice {
 	private String serialNumber;
 	private String ipAddress;
 
-	public HardwareDevice () {
-	}
 	
 	public HardwareDevice (TypeHardwareDevice aType, String aDiskSize, String aMemorySize, int anIanNumber
-			, String aSerialNumber, String anIpAddress) {
+			, String aMacAddress, String aSerialNumber, String anIpAddress) {
 		type = aType;
 		diskSize = aDiskSize;
 		memorySize = aMemorySize;
 		ianNumber = anIanNumber;
+		macAddress = aMacAddress;
 		serialNumber = aSerialNumber;
 		ipAddress = anIpAddress;
 	}

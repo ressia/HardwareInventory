@@ -14,7 +14,7 @@
         
         <set name="types" lazy="false" inverse="true" cascade="all">
             <key column="type_id"/>
-            <one-to-many class="HwType"/>
+            <one-to-many class="TypeHardwareDevice"/>
         </set>
 	</class>
 

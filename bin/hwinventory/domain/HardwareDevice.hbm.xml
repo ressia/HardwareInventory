@@ -9,17 +9,15 @@
         <id name="idHardwareDevice" column="device_id">
             <generator class="native"/>
         </id>
-        
-        <property name="scgNumber" column="item_scg_num"/>
-        <property name="nameItem" column="item_name"/>
-	    <property name="diskSize" column="item_disk"/>
-    	<property name="memorySize" column="item_memory"/>
-    	<property name="ianItem" column="item_ian"/>
-    	<property name="macItem" column="item_mac"/>
-    	<property name="snItem" column="item_sn"/>
-    	<property name="ipItem" column="item_ip"/>
+      
+	    <property name="diskSize" column="disk_size"/>
+    	<property name="memorySize" column="memory_size"/>
+    	<property name="ianNumber" column="ian_number"/>
+    	<property name="macAddress" column="mac_address"/>
+    	<property name="serialNumber" column="serial_number"/>
+    	<property name="ipAddress" column="ip_address"/>
 
-		<one-to-one name="type" class="TypeHardwareDevice"/>
+		<many-to-one name="type" class="TypeHardwareDevice" column="type_id" not-null="true"/>
 	</class>
 
 </hibernate-mapping>

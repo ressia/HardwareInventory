@@ -18,13 +18,10 @@
     	<property name="guarantee" column="item_guarantee"/>
     	<property name="guaranteeEnd" column="item_guarantee_end"/>
 
-        <one-to-one name="user" class="User"/>
-    	<one-to-one name="hardwareDevice" class="HardwareDevice"/>
-    	<one-to-one name="location" class="LocationItemInventory"/>
-    	
-    	<many-to-one name="inventoryItem" class="InventoryItem" column="inventory_id" not-null="true"/>
-    	
-
+        <many-to-one name="user" class="User" column="user_id" not-null="true"/>
+        <many-to-one name="hardwareDevice" class="HardwareDevice" column="device_id" not-null="true"/>
+        <many-to-one name="location" class="LocationItemInventory" column="location_id" not-null="true"/>
+   
 	</class>
 
 </hibernate-mapping>

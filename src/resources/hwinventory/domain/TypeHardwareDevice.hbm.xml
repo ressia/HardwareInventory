@@ -13,6 +13,11 @@
         <property name="nameType" column="type_name"/>
 
     	<many-to-one name="category" class="CategoryHardwareDevice" column="category_id" not-null="true"/>
+    	
+    	<set name="devices" lazy="false" inverse="true" cascade="all">
+            <key column="device_id"/>
+            <one-to-many class="HardwareDevice"/>
+        </set>
 
 	</class>
 

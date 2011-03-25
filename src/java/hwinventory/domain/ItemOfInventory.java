@@ -1,6 +1,7 @@
 package hwinventory.domain;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,19 +14,19 @@ public class ItemOfInventory implements Serializable {
 	private String nameItem;
 	private User user;
 	private LocationItemInventory location; 
-	private Date inventoryDate;
+	private Calendar inventoryDate;
 	private float price;
 	private String budget;
 	private String guarantee;
-	private String guaranteeEnd;
-	private InventoryItem inventoryItem;
+	private Calendar guaranteeEnd;
+	private String note;
 
 	public ItemOfInventory() {
 	}
 
 	public ItemOfInventory(HardwareDevice aHardwareDevice, int aScgNumber, String aNameItem, User anUser
-			, LocationItemInventory aLocation, Date anInventoryDate, float aPrice, String aBudget
-			, String aGuarantee, String aGuaranteeEnd) {
+			, LocationItemInventory aLocation, Calendar anInventoryDate, float aPrice, String aBudget
+			, String aGuarantee, Calendar aGuaranteeEnd, String aNote) {
 		hardwareDevice = aHardwareDevice;
 		scgNumber = aScgNumber;
 		nameItem = aNameItem;
@@ -36,6 +37,7 @@ public class ItemOfInventory implements Serializable {
 		budget = aBudget;
 		guarantee = aGuarantee;
 		guaranteeEnd = aGuaranteeEnd;
+		note = aNote;
 	}
 
 	public Long getIdItem() {
@@ -86,11 +88,11 @@ public class ItemOfInventory implements Serializable {
 		this.location = location;
 	}
 
-	public Date getInventoryDate() {
+	public Calendar getInventoryDate() {
 		return inventoryDate;
 	}
 
-	public void setInventoryDate(Date inventoryDate) {
+	public void setInventoryDate(Calendar inventoryDate) {
 		this.inventoryDate = inventoryDate;
 	}
 
@@ -118,12 +120,20 @@ public class ItemOfInventory implements Serializable {
 		this.guarantee = guarantee;
 	}
 
-	public String getGuaranteeEnd() {
+	public Calendar getGuaranteeEnd() {
 		return guaranteeEnd;
 	}
 
-	public void setGuaranteeEnd(String guaranteeEnd) {
+	public void setGuaranteeEnd(Calendar guaranteeEnd) {
 		this.guaranteeEnd = guaranteeEnd;
+	}
+	
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 	@Override
@@ -143,6 +153,8 @@ public class ItemOfInventory implements Serializable {
 				+ ((location == null) ? 0 : location.hashCode());
 		result = prime * result
 				+ ((nameItem == null) ? 0 : nameItem.hashCode());
+		result = prime * result
+				+ ((note == null) ? 0 : note.hashCode());
 		result = prime * result + Float.floatToIntBits(price);
 		result = prime * result + scgNumber;
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
@@ -192,6 +204,11 @@ public class ItemOfInventory implements Serializable {
 			if (other.nameItem != null)
 				return false;
 		} else if (!nameItem.equals(other.nameItem))
+			return false;
+		if (note == null) {
+			if (other.note != null)
+				return false;
+		} else if (!note.equals(other.note))
 			return false;
 		if (Float.floatToIntBits(price) != Float.floatToIntBits(other.price))
 			return false;

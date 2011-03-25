@@ -1,5 +1,8 @@
 package hwinventory;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import hwinventory.domain.*;
 
 public class InventoryEntry {
@@ -8,25 +11,28 @@ public class InventoryEntry {
 		
 		InventoryAccess anInventoryAccess = new InventoryAccess();
 
-		int aScgNumber = 1;
-		int anIanItem = 265;
-		String aNameCategory = "PC desktop";
-		String aNameItem = "moore";
-		String anIpItem = "130.92.65.139";
-		String aMacItem = "00:50:DA:68:9A:1B";
-		String aNameType = "Dell Dimension XPS T700r";
-		String aDiskSize = "512MB";
-		String aMemorySize = "80GB";
-		String aNameLocation = "";
-		String aNameUser = "NOONE";
-		float aPrice = 3993;
-		String anInventoryDate = "01/01/04";
+		int aScgNumber = 9;
+		int anIanNumber = 2523;
+		String aNameCategory = "Mac laptop";
+		String aNameItem = "magul";
+		String anIpAddress = "130.92.65.219";
+		String aMacAddress = "00:16:cb:96:e1:ad";
+		String aNameType = "MacBook Pro 2.16Ghz 15";
+		String aDiskSize = "2GB";
+		String aMemorySize = "220GB";
+		String aNameLocation = "S14/101";
+		String aNameUser = "Magu";
+		float aPrice = (float) 3993.12;
+		Calendar anInventoryDate = new GregorianCalendar(2004,01,01);
 		String aBudget = "EK 1999";
-		String aSnItem = "";
-		String aGuarantee = "";
-		String aGuaranteeEnd = "3/2/08";
-		String aHwNotes = "1 x LAN, 2 x USB 1.1 + 512 MB (CHF 1126.60, EK 2000)";
+		String aSerialNumber = "W863112UVWZ";
+		String aGuarantee = "MacBook 531040673291";
+		Calendar aGuaranteeEnd = new GregorianCalendar(2008,02,03);
+		String aNote = "1 x LAN, 2 x USB 1.1 + 512 MB (CHF 1126.60, EK 2000)";
 
-		anInventoryAccess.InventoryAccess();
+		anInventoryAccess.InventoryAccess(aScgNumber, anIanNumber, aNameCategory,
+				aNameItem, anIpAddress, aMacAddress, aNameType, aDiskSize,
+				aMemorySize, aNameLocation, aNameUser, aPrice, anInventoryDate,
+				aBudget, aSerialNumber, aGuarantee, aGuaranteeEnd, aNote);
 	}
 }

@@ -28,12 +28,12 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping resource="hwinventory/domain/HwItem.hbm.xml"/>
-        <mapping resource="hwinventory/domain/HwUser.hbm.xml"/>
-        <mapping resource="hwinventory/domain/HwType.hbm.xml"/>
-        <mapping resource="hwinventory/domain/HwLocation.hbm.xml"/>
-        <mapping resource="hwinventory/domain/HwCategory.hbm.xml"/>
-        <mapping resource="hwinventory/domain/HwInventory.hbm.xml"/>
+        <mapping resource="hwinventory/domain/ItemOfInventory.hbm.xml"/>
+        <mapping resource="hwinventory/domain/User.hbm.xml"/>
+        <mapping resource="hwinventory/domain/TypeHardwareDevice.hbm.xml"/>
+        <mapping resource="hwinventory/domain/LocationItemInventory.hbm.xml"/>
+        <mapping resource="hwinventory/domain/CategoryHardwareDevice.hbm.xml"/>
+        <mapping resource="hwinventory/domain/HardwareDevice.hbm.xml"/>
  	
     </session-factory>
 
