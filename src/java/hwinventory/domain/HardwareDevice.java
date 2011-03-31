@@ -11,6 +11,8 @@ public class HardwareDevice {
 	private String serialNumber;
 	private String ipAddress;
 
+	public HardwareDevice () {
+	}
 	
 	public HardwareDevice (TypeHardwareDevice aType, String aDiskSize, String aMemorySize, int anIanNumber
 			, String aMacAddress, String aSerialNumber, String anIpAddress) {

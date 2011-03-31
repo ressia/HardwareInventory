@@ -28,7 +28,7 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping resource="hwinventory/domain/ItemOfInventory.hbm.xml"/>
+        <mapping resource="hwinventory/domain/InventoryItem.hbm.xml"/>
         <mapping resource="hwinventory/domain/User.hbm.xml"/>
         <mapping resource="hwinventory/domain/TypeHardwareDevice.hbm.xml"/>
         <mapping resource="hwinventory/domain/LocationItemInventory.hbm.xml"/>

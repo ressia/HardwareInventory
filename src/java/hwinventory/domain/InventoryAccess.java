@@ -3,70 +3,155 @@ package hwinventory.domain;
 import hwinventory.util.HibernateUtil;
 
 import java.util.Calendar;
-import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 public class InventoryAccess {
 
-	/*********** AccessIventory **********/
+	/*********** insertInventoryItem **********/
 
-	public void InventoryAccess(int aScgNumber, int anIanNumber,
+	public void insertInventoryItem(int aScgNumber, int anIanNumber,
 			String aNameCategory, String aNameItem, String anIpAddress,
 			String aMacAddress, String aNameType, String aDiskSize,
 			String aMemorySize, String aNameLocation, String aNameUser,
 			float aPrice, Calendar anInventoryDate, String aBudget,
 			String aSerialNumber, String aGuarantee, Calendar aGuaranteeEnd,
 			String aNote) {
+		CategoryHardwareDevice aCategory = verifiedCategory(aNameCategory);
+		TypeHardwareDevice aType = verifiedType(aNameType, aCategory);
+		HardwareDevice aHardwareDevice = verifiedHardwareDevice(aType,
+				aDiskSize, aMemorySize, anIanNumber, aMacAddress,
+				aSerialNumber, anIpAddress);
+		User anUser = verifiedAnUser(aNameUser);
+		LocationItemInventory aLocation = verifiedAlocation(aNameLocation);
+		verifiedInventoryItem(aHardwareDevice, aScgNumber, aNameItem, anUser,
+				aLocation, anInventoryDate, aPrice, aBudget, aGuarantee,
+				aGuaranteeEnd, aNote);
+	}
 
-		List item = namedInt("ItemOfInventory", "scgNumber", aScgNumber);
+	/*********** verifiedCategory **********/
 
-		if (item.isEmpty()) {
-
-			CategoryHardwareDevice aCategory = new CategoryHardwareDevice(aNameCategory);
-			TypeHardwareDevice aType = new TypeHardwareDevice(aCategory,aNameType);
-			HardwareDevice aHardwareDevice = new HardwareDevice(aType, aDiskSize, aMemorySize, anIanNumber, aMacAddress, aSerialNumber, anIpAddress);
-			List category = namedString("CategoryHardwareDevice","nameCategory", aNameCategory);
-
-			if (category.isEmpty()) {
-				addCategory(aCategory);
-				addType(aType, aCategory);
-				addHardwareDevice(aHardwareDevice, aType);
-			} else {
-
-				List type = namedString("TypeHardwareDevice", "nameType", aNameType);
-
-				if (type.isEmpty()) {
-					addType(aType, aCategory);
-					addHardwareDevice(aHardwareDevice, aType);
-				} else {
-					
-					boolean hwDevice = HardwareDevice.class.equals(aHardwareDevice);
-					
-					if (!hwDevice) {
-						addHardwareDevice(aHardwareDevice, aType);
-					}
-				}
-			}
-			
-			LocationItemInventory aLocation = new LocationItemInventory(aNameLocation);
-			List location = namedString("LocationItemInventory", "nameLocation", aNameLocation);
-			
-			if (location.isEmpty()) {
-				addLocation(aLocation);
-			}
-			
-			User anUser = new User(aNameUser);
-			List user = namedString("User", "nameUser", aNameUser);
-			
-			if (user.isEmpty()) {
-				addUser(anUser);
-			}
-			
-			ItemOfInventory anItem = new ItemOfInventory(aHardwareDevice, aScgNumber, aNameItem, anUser, aLocation, anInventoryDate, aPrice, aBudget, aGuarantee, aGuaranteeEnd, aNote);
-			addItem(anItem);
+	private CategoryHardwareDevice verifiedCategory(String aNameCategory) {
+		CategoryHardwareDevice aCategory = getACategory(aNameCategory);
+		if (aCategory == null) {
+			aCategory = new CategoryHardwareDevice(aNameCategory);
+			addCategory(aCategory);
 		}
+		return aCategory;
+	}
+
+	/*********** verifiedType **********/
+
+	private TypeHardwareDevice verifiedType(String aNameType,
+			CategoryHardwareDevice aCategory) {
+		TypeHardwareDevice aType = getAType(aNameType);
+		if (aType == null) {
+			aType = new TypeHardwareDevice(aCategory, aNameType);
+			addType(aType, aCategory);
+		}
+		return aType;
+	}
+
+	/*********** verifiedHardwareDevice **********/
+
+	private HardwareDevice verifiedHardwareDevice(TypeHardwareDevice aType,
+			String aDiskSize, String aMemorySize, int anIanNumber,
+			String aMacAddress, String aSerialNumber, String anIpAddress) {
+		HardwareDevice aHardwareDevice = getAHardwareDevice(aType, anIanNumber,
+				anIpAddress, aSerialNumber);
+		if (aHardwareDevice == null) {
+			aHardwareDevice = new HardwareDevice(aType, aDiskSize, aMemorySize,
+					anIanNumber, aMacAddress, aSerialNumber, anIpAddress);
+			addHardwareDevice(aHardwareDevice, aType);
+		}
+		return aHardwareDevice;
+	}
+
+	/*********** verifiedUser **********/
+
+	private User verifiedAnUser(String aNameUser) {
+		User anUser = getAnUser(aNameUser);
+		if (anUser == null) {
+			anUser = new User(aNameUser);
+			addUser(anUser);
+		}
+		return anUser;
+	}
+
+	/*********** verifiedLocation **********/
+
+	private LocationItemInventory verifiedAlocation(String aNameLocation) {
+		LocationItemInventory aLocation = getAlocation(aNameLocation);
+		if (aLocation == null) {
+			aLocation = new LocationItemInventory(aNameLocation);
+			addLocation(aLocation);
+		}
+		return aLocation;
+	}
+
+	/*********** verifiedInventoryItem **********/
+
+	private void verifiedInventoryItem(HardwareDevice aHardwareDevice,
+			int aScgNumber, String aNameItem, User anUser,
+			LocationItemInventory aLocation, Calendar anInventoryDate,
+			float aPrice, String aBudget, String aGuarantee,
+			Calendar aGuaranteeEnd, String aNote) {
+		InventoryItem anInventoryItem = getAnInventoryItem(aScgNumber);
+		if (anInventoryItem == null) {
+			anInventoryItem = new InventoryItem(aHardwareDevice, aScgNumber,
+					aNameItem, anUser, aLocation, anInventoryDate, aPrice,
+					aBudget, aGuarantee, aGuaranteeEnd, aNote);
+			addInventoryItem(anInventoryItem);
+		}
+	}
+
+	/*********** getACategory **********/
+
+	private CategoryHardwareDevice getACategory(String aNameCategory) {
+		CategoryHardwareDevice aCategory = (CategoryHardwareDevice) accessAnObjectString(
+				"CategoryHardwareDevice", "nameCategory", aNameCategory);
+		return aCategory;
+	}
+
+	/*********** getAType **********/
+
+	private TypeHardwareDevice getAType(String aNameType) {
+		TypeHardwareDevice aType = (TypeHardwareDevice) accessAnObjectString(
+				"TypeHardwareDevice", "nameType", aNameType);
+		return aType;
+	}
+
+	/*********** getAnUser **********/
+
+	private User getAnUser(String aNameUser) {
+		User anUser = (User) accessAnObjectString("User", "nameUser", aNameUser);
+		return anUser;
+	}
+
+	/*********** getALocation **********/
+
+	private LocationItemInventory getAlocation(String aNameLocation) {
+		LocationItemInventory aLocation = (LocationItemInventory) accessAnObjectString(
+				"LocationItemInventory", "nameLocation", aNameLocation);
+		return aLocation;
+	}
+
+	/*********** getAHardwareDevice **********/
+
+	private HardwareDevice getAHardwareDevice(TypeHardwareDevice aType,
+			int anIanNumber, String anIpAddress, String aSerialNumber) {
+		HardwareDevice aHardwareDevice = (HardwareDevice) accessAHarwareDevice(
+				aType, anIanNumber, anIpAddress, aSerialNumber);
+		return aHardwareDevice;
+	}
+
+	/*********** getInventoryItem **********/
+
+	private InventoryItem getAnInventoryItem(int aScgNumber) {
+		InventoryItem anInventoryItem = (InventoryItem) accessAnObjectInt(
+				"InventoryItem", "scgNumber", aScgNumber);
+		return anInventoryItem;
+
 	}
 
 	/*********** addCategory **********/
@@ -74,25 +159,20 @@ public class InventoryAccess {
 	public void addCategory(CategoryHardwareDevice aCategory) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-
 		aCategory.setNameCategory(aCategory.getNameCategory());
-
 		session.save(aCategory);
-
 		session.getTransaction().commit();
 	}
 
 	/*********** addType **********/
 
-	public void addType(TypeHardwareDevice aType, CategoryHardwareDevice aCategory) {
+	public void addType(TypeHardwareDevice aType,
+			CategoryHardwareDevice aCategory) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-
 		CategoryHardwareDevice aCateg = (CategoryHardwareDevice) session.load(
 				CategoryHardwareDevice.class, aCategory.getIdCategory());
-
 		aCateg.addTypes(aType);
-
 		session.getTransaction().commit();
 	}
 
@@ -101,11 +181,8 @@ public class InventoryAccess {
 	public void addUser(User anUser) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-
 		anUser.setNameUser(anUser.getNameUser());
-
 		session.save(anUser);
-
 		session.getTransaction().commit();
 	}
 
@@ -114,65 +191,56 @@ public class InventoryAccess {
 	public void addLocation(LocationItemInventory aLocation) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-
 		aLocation.setNameLocation(aLocation.getNameLocation());
-
 		session.save(aLocation);
-
 		session.getTransaction().commit();
 	}
 
-	/*********** addItem **********/
+	/*********** addInventoryItem **********/
 
-	public void addItem(ItemOfInventory anItem) {
+	public void addInventoryItem(InventoryItem anInventoryItem) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-	
-		anItem.setScgNumber(anItem.getScgNumber());
-		anItem.setBudget(anItem.getBudget());
-		anItem.setGuarantee(anItem.getGuarantee());
-		anItem.setGuaranteeEnd(anItem.getGuaranteeEnd());
-		anItem.setHardwareDevice(anItem.getHardwareDevice());
-		anItem.setInventoryDate(anItem.getInventoryDate());
-		anItem.setLocation(anItem.getLocation());
-		anItem.setNameItem(anItem.getNameItem());
-		anItem.setNote(anItem.getNote());
-		anItem.setPrice(anItem.getPrice());
-		anItem.setUser(anItem.getUser());
-		
-		session.save(anItem);
-
+		anInventoryItem.setScgNumber(anInventoryItem.getScgNumber());
+		anInventoryItem.setBudget(anInventoryItem.getBudget());
+		anInventoryItem.setGuarantee(anInventoryItem.getGuarantee());
+		anInventoryItem.setGuaranteeEnd(anInventoryItem.getGuaranteeEnd());
+		anInventoryItem.setHardwareDevice(anInventoryItem.getHardwareDevice());
+		anInventoryItem.setInventoryDate(anInventoryItem.getInventoryDate());
+		anInventoryItem.setLocation(anInventoryItem.getLocation());
+		anInventoryItem.setNameItem(anInventoryItem.getNameItem());
+		anInventoryItem.setNote(anInventoryItem.getNote());
+		anInventoryItem.setPrice(anInventoryItem.getPrice());
+		anInventoryItem.setUser(anInventoryItem.getUser());
+		session.save(anInventoryItem);
 		session.getTransaction().commit();
 	}
 
 	/*********** addHardwareDevice **********/
 
-	public void addHardwareDevice(HardwareDevice aHardwareDevice, TypeHardwareDevice aTypeHardwareDevice) {
+	public void addHardwareDevice(HardwareDevice aHardwareDevice,
+			TypeHardwareDevice aType) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-
-		TypeHardwareDevice aType = (TypeHardwareDevice) session.load(
-				TypeHardwareDevice.class, aTypeHardwareDevice.getIdType());
-		
-		aType.addDevices(aHardwareDevice);	
-
+		TypeHardwareDevice aTypeHw = (TypeHardwareDevice) session.load(
+				TypeHardwareDevice.class, aType.getIdType());
+		aTypeHw.addDevices(aHardwareDevice);
 		session.getTransaction().commit();
 	}
 
+	/*********** accessAnObjectInt **********/
 
-	/*********** namedInt **********/
-
-	public List namedInt(String className, String variableName, int variable)
-			throws HibernateException {
+	public Object accessAnObjectInt(String className, String variableName,
+			int variable) throws HibernateException {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		List result = null;
+		Object result = null;
 		try {
 			result = session
 					.createQuery(
 							"from " + className + " c where c." + variableName
 									+ "= :name").setParameter("name", variable)
-					.list();
+					.uniqueResult();
 			session.getTransaction().commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -181,19 +249,19 @@ public class InventoryAccess {
 		return result;
 	}
 
-	/*********** namedString **********/
+	/*********** accessAnObjectString **********/
 
-	public List namedString(String className, String variableName,
+	public Object accessAnObjectString(String className, String variableName,
 			String variable) throws HibernateException {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		List result = null;
+		Object result = null;
 		try {
 			result = session
 					.createQuery(
 							"from " + className + " c where c." + variableName
 									+ "= :name").setParameter("name", variable)
-					.list();
+					.uniqueResult();
 			session.getTransaction().commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -201,27 +269,39 @@ public class InventoryAccess {
 		}
 		return result;
 	}
-	
-	/*********** namedDevice **********/
 
-	public List namedDevice(String className, String variableName,
-			String variable) throws HibernateException {
+	/*********** accessAHardwareDevice **********/
+
+	private HardwareDevice accessAHarwareDevice(TypeHardwareDevice aType,
+			int anIanNumber, String anIpAddress, String aSerialNumber) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		List result = null;
-		try {
-			result = session
-					.createQuery(
-							"from " + className + " c where c." + variableName
-									+ "= :name").setParameter("name", variable)
-					.list();
-			session.getTransaction().commit();
-		} catch (HibernateException e) {
-			e.printStackTrace();
-		} finally {
+		HardwareDevice result = null;
+		if (anIanNumber == 0 && anIpAddress == null && aSerialNumber == null) {
+			try {
+				result = (HardwareDevice) session
+						.createQuery(
+								"from HardwareDevice h where h.type.idType =:type")
+						.setParameter("type", aType.getIdType()).uniqueResult();
+				session.getTransaction().commit();
+			} catch (HibernateException e) {
+				e.printStackTrace();
+			} finally {
+			}
+		} else {
+			try {
+				result = (HardwareDevice) session
+						.createQuery(
+								"from HardwareDevice h where h.ianNumber =:ian and h.ipAddress =:ip and h.serialNumber =:serial")
+						.setParameter("ian", anIanNumber)
+						.setParameter("ip", anIpAddress)
+						.setParameter("serial", aSerialNumber).uniqueResult();
+				session.getTransaction().commit();
+			} catch (HibernateException e) {
+				e.printStackTrace();
+			} finally {
+			}
 		}
 		return result;
 	}
-
-	/*********** end class **********/
 }

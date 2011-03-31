@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ItemOfInventory implements Serializable {
+public class InventoryItem implements Serializable {
 
 	private Long idItem;
 	private HardwareDevice hardwareDevice;
@@ -21,10 +21,10 @@ public class ItemOfInventory implements Serializable {
 	private Calendar guaranteeEnd;
 	private String note;
 
-	public ItemOfInventory() {
+	public InventoryItem() {
 	}
 
-	public ItemOfInventory(HardwareDevice aHardwareDevice, int aScgNumber, String aNameItem, User anUser
+	public InventoryItem(HardwareDevice aHardwareDevice, int aScgNumber, String aNameItem, User anUser
 			, LocationItemInventory aLocation, Calendar anInventoryDate, float aPrice, String aBudget
 			, String aGuarantee, Calendar aGuaranteeEnd, String aNote) {
 		hardwareDevice = aHardwareDevice;
@@ -169,7 +169,7 @@ public class ItemOfInventory implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ItemOfInventory other = (ItemOfInventory) obj;
+		InventoryItem other = (InventoryItem) obj;
 		if (budget == null) {
 			if (other.budget != null)
 				return false;
