@@ -18,4 +18,8 @@ public class HardwareInventory implements Serializable {
 	public void setItems(Set items) {
 		this.items = items;
 	}
+
+	public Object addItem(InventoryItem anItem) {
+		return items.add(anItem);
+	}
 }
