@@ -6,16 +6,12 @@
 
     <class name="CategoryHardwareDevice" table="hw_categories"> 
 
-        <id name="idCategory" column="category_id">
+        <id name="idCategory" column="CATEGORY_ID">
             <generator class="native"/>
         </id>
 
-        <property name="nameCategory" column="category_name"/>
+        <property name="nameCategory" column="CATEGORY_NAME"/>
         
-        <set name="types" lazy="false" inverse="true" cascade="all">
-            <key column="type_id"/>
-            <one-to-many class="TypeHardwareDevice"/>
-        </set>
 	</class>
 
 </hibernate-mapping>

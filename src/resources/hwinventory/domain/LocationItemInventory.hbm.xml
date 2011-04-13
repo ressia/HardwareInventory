@@ -6,11 +6,11 @@
 
     <class name="LocationItemInventory" table="inventory_locations"> 
 
-        <id name="idLocation" column="location_id">
+        <id name="idLocation" column="LOCATION_ID">
             <generator class="native"/>
         </id>
 
-        <property name="nameLocation" column="location_name"/>
+        <property name="nameLocation" column="LOCATION_NAME"/>
     
 	</class>
 

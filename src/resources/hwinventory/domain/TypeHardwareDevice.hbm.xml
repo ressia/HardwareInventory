@@ -6,18 +6,13 @@
 
     <class name="TypeHardwareDevice" table="hw_types"> 
 
-        <id name="idType" column="type_id">
+        <id name="idType" column="TYPE_ID">
             <generator class="native"/>
         </id>
 
-        <property name="nameType" column="type_name"/>
+        <property name="nameType" column="TYPE_NAME"/>
 
-    	<many-to-one name="category" class="CategoryHardwareDevice" column="category_id" not-null="true"/>
-    	
-    	<set name="devices" lazy="false" inverse="true" cascade="all">
-            <key column="device_id"/>
-            <one-to-many class="HardwareDevice"/>
-        </set>
+    	<many-to-one name="category" class="CategoryHardwareDevice" column="CATEGORY_ID" not-null="true"/>
 
 	</class>
 

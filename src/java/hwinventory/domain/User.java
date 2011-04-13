@@ -9,7 +9,6 @@ public class User implements Serializable {
 	
 	private Long idUser;
 	private String nameUser;
-	private Set items = new HashSet();
 	
 	public User() {
 	}
@@ -33,15 +32,7 @@ public class User implements Serializable {
 	public void setNameUser(String nameUser) {
 		this.nameUser = nameUser;
 	}
-	
-	public Set getItems() {
-		return items;
-	}
-
-	public void setItems(Set items) {
-		this.items = items;
-	}
-	
+		
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -67,10 +58,4 @@ public class User implements Serializable {
 			return false;
 		return true;
 	}
-	
-	public void addItems(InventoryItem anItem) {
-		anItem.setUser(this);
-		items.add(anItem);
-	}
-
 }

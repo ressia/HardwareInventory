@@ -6,16 +6,12 @@
 
     <class name="User" table="users">
 
-        <id name="idUser" column="user_id">
+        <id name="idUser" column="USER_ID">
             <generator class="native"/>
         </id>
 
-        <property name="nameUser" column="user_name"/>
-        
-        <set name="items" lazy="false" inverse="true" cascade="all">
-            <key column="item_id"/>
-            <one-to-many class="InventoryItem"/>
-        </set>
+        <property name="nameUser" column="USER_NAME"/>
+
 	</class>
 
 </hibernate-mapping>

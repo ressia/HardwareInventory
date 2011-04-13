@@ -6,18 +6,18 @@
 
     <class name="HardwareDevice" table="hw_device"> 
 
-        <id name="idHardwareDevice" column="device_id">
+        <id name="idHardwareDevice" column="DEVICE_ID">
             <generator class="native"/>
         </id>
       
-	    <property name="diskSize" column="disk_size"/>
-    	<property name="memorySize" column="memory_size"/>
-    	<property name="ianNumber" column="ian_number"/>
-    	<property name="macAddress" column="mac_address"/>
-    	<property name="serialNumber" column="serial_number"/>
-    	<property name="ipAddress" column="ip_address"/>
+	    <property name="diskSize" column="DISK_SIZE"/>
+    	<property name="memorySize" column="MEMORY_SIZE"/>
+    	<property name="ianNumber" column="IAN_NUMBER"/>
+    	<property name="macAddress" column="MAC_ADDRESS"/>
+    	<property name="serialNumber" column="SERIAL_NUMBER"/>
+    	<property name="ipAddress" column="IP_ADDRESS"/>
 
-		<many-to-one name="type" class="TypeHardwareDevice" column="type_id" not-null="true"/>
+		<many-to-one name="type" class="TypeHardwareDevice" column="TYPE_ID" not-null="true"/>
 	</class>
 
 </hibernate-mapping>
