@@ -1,6 +1,6 @@
 package hwinventory.domain;
 
-import hwinventory.util.HibernateUtil;
+import hwinventory.db.HibernateUtil;
 
 import java.util.Calendar;
 import org.hibernate.HibernateException;

@@ -14,15 +14,14 @@
 	    </repository>
 	  </repositories>
 
-    <groupId>hw-inventory</groupId>
-    <artifactId>hw-inventory</artifactId>
-	<packaging>jar</packaging>
+    <groupId>hwinventory.domain</groupId>
+    <artifactId>HardwareInventory</artifactId>
+	<packaging>war</packaging>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Hw Inventory</name>
+    <name>Hardware Inventory</name>
 
     <build>
-         <!-- we dont want the version to be part of the generated war file name -->
-         <finalName>${artifactId}</finalName>
+   		<finalName>${project.artifactId}</finalName>
     </build>
 
 	<dependencies>
@@ -42,14 +41,14 @@
           <version>1.6.1</version>        
 		</dependency>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-          <version>1.6.1</version>        
+      	<groupId>org.slf4j</groupId>
+      	<artifactId>slf4j-log4j12</artifactId>
+         	<version>1.6.1</version>        
 		</dependency>
 	<dependency>
-	<groupId>mysql</groupId>
-	<artifactId>mysql-connector-java</artifactId>
-	<version>5.1.9</version>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.9</version>
 	</dependency>
      <dependency>
         <groupId>javassist</groupId>
@@ -57,11 +56,32 @@
  		<version>3.8.0.GA</version>
     </dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.2</version>
-      <scope>test</scope>
+      	<groupId>junit</groupId>
+      	<artifactId>junit</artifactId>
+      	<version>3.8.2</version>
+      	<scope>test</scope>
     </dependency>
+     <dependency>
+        <groupId>com.sun.faces</groupId>
+        <artifactId>jsf-api</artifactId>
+        <version>2.0.2</version>
+        <scope>runtime</scope>
+    </dependency>
+    <dependency>
+        <groupId>com.sun.faces</groupId>
+        <artifactId>jsf-impl</artifactId>
+        <version>2.0.2</version>
+        <scope>runtime</scope>
+    </dependency> 
+    <dependency>
+    	<groupId>org.apache.myfaces.core</groupId>
+    	<artifactId>myfaces-api</artifactId>
+   		<version>1.2.7</version>
+	</dependency>
+	<dependency>
+    	<groupId>org.apache.myfaces.core</groupId>
+    	<artifactId>myfaces-impl</artifactId>
+    	<version>1.2.7</version>
+	</dependency>
   </dependencies>
-
 </project>
