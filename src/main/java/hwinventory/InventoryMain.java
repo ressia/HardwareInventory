@@ -32,18 +32,18 @@ public class InventoryMain {
 		Calendar aGuaranteeEnd = new GregorianCalendar(2011,5,2);
 		String aNote = "Test 5";
 		
-		CategoryHardwareDevice aCategory = anInventoryAccess.verifiedCategory(aNameCategory);
+		CategoryHardwareDevice aCategory = anInventoryAccess.addCategory(aNameCategory);
 		
-		TypeHardwareDevice aType = anInventoryAccess.verifiedType(aNameType, aCategory);
+		TypeHardwareDevice aType = anInventoryAccess.addType(aNameType, aCategory);
 		
-		HardwareDevice aHardwareDevice = anInventoryAccess.verifiedHardwareDevice(aType, aDiskSize, aMemorySize
+		HardwareDevice aHardwareDevice = anInventoryAccess.addHardwareDevice(aType, aDiskSize, aMemorySize
 				,anIanNumber, aMacAddress, aSerialNumber, anIpAddress);
 		
-		User anUser = anInventoryAccess.verifiedAnUser(aNameUser);
+		User anUser = anInventoryAccess.addUser(aNameUser);
 		
-		LocationItemInventory aLocation = anInventoryAccess.verifiedAlocation(aNameLocation);
+		LocationItemInventory aLocation = anInventoryAccess.addAlocation(aNameLocation);
 		
-		anInventoryAccess.insertInventoryItem(aHardwareDevice, aScgNumber, aNameItem, anUser,
+		anInventoryAccess.addInventoryItem(aHardwareDevice, aScgNumber, aNameItem, anUser,
 				aLocation, anInventoryDate, aPrice, aBudget, aGuarantee,
 				aGuaranteeEnd, aNote);
 		

@@ -30,7 +30,7 @@ public class AddUserPage extends WebPage {
     	public void onSubmit() {
     		UserDraft aUserDraftModel = (UserDraft)getModelObject();
     		InventoryAccess anInventoryAccess = new InventoryAccess();
-    		anInventoryAccess.verifiedAnUser(aUserDraftModel.getName());
+    		anInventoryAccess.addUser(aUserDraftModel.getName());
     	}
 	}
     
