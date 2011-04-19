@@ -31,6 +31,8 @@ public class AddUserPage extends WebPage {
     		UserDraft aUserDraftModel = (UserDraft)getModelObject();
     		InventoryAccess anInventoryAccess = new InventoryAccess();
     		anInventoryAccess.addUser(aUserDraftModel.getName());
+    		MessagePage messagePage = new MessagePage();
+    		setResponsePage(messagePage);
     	}
 	}
     
