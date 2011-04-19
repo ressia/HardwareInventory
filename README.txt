@@ -27,3 +27,14 @@ If you require to change your data base configuration check the file hibernate.c
 	mvn package
 	copy the war to APACHE_HOME/webapps
 	restart tomcat
+	
+	
+	
+	
+	
+	
+    <dependency>
+     <groupId>javax.servlet</groupId>
+     <artifactId>servlet-api</artifactId>
+         <version>2.5</version>        
+    </dependency>
