@@ -29,12 +29,3 @@ If you require to change your data base configuration check the file hibernate.c
 	restart tomcat
 	
 	
-	
-	
-	
-	
-    <dependency>
-     <groupId>javax.servlet</groupId>
-     <artifactId>servlet-api</artifactId>
-         <version>2.5</version>        
-    </dependency>
