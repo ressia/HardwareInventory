@@ -20,3 +20,10 @@ http://mysql.com/why-mysql/white-papers/mysql_wp_high-availability_webrefarchs.p
 
 - Execute the main in the class hwinventory.InventoryMain for testing the database connection.
 If you require to change your data base configuration check the file hibernate.cfg.xml in resources.
+
+- download and install apache tomcat from http://tomcat.apache.org/
+
+- for building the war run:
+	mvn package
+	copy the war to APACHE_HOME/webapps
+	restart tomcat
