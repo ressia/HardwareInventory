@@ -11,6 +11,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 public class UserPage extends WebPage {
 	
     public UserPage() {
+    	
     	User user = new User();
     	CompoundPropertyModel userModel = new CompoundPropertyModel(user);
     	Form form = new UserForm("user",userModel);
@@ -26,14 +27,14 @@ public class UserPage extends WebPage {
     class UserForm extends Form {
     	
     	public UserForm (String id, CompoundPropertyModel model) {
-    		super(id,model);
+    		super(id, model);
     	}
     	
     	@Override
     	
     	public void onSubmit() {
-    	/* Print the contents of its own model object */
-    	System.out.println(getModelObject());
+    		
+    		
     		}
     	}   
 }

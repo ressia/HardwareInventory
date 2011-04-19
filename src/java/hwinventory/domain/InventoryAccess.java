@@ -8,29 +8,12 @@ import org.hibernate.Session;
 
 public class InventoryAccess {
 
-	/*********** addInventoryItem **********/
+	
+	/**
+	 * verifiedCategory 
+	**/
 
-	public void addInventoryItem(int aScgNumber, int anIanNumber,
-			String aNameCategory, String aNameItem, String anIpAddress,
-			String aMacAddress, String aNameType, String aDiskSize,
-			String aMemorySize, String aNameLocation, String aNameUser,
-			float aPrice, Calendar anInventoryDate, String aBudget,
-			String aSerialNumber, String aGuarantee, Calendar aGuaranteeEnd,
-			String aNote) {
-		CategoryHardwareDevice aCategory = verifiedCategory(aNameCategory);
-		TypeHardwareDevice aType = verifiedType(aNameType, aCategory);
-		HardwareDevice aHardwareDevice = verifiedHardwareDevice(aType, aDiskSize, aMemorySize
-				,anIanNumber, aMacAddress, aSerialNumber, anIpAddress);
-		User anUser = verifiedAnUser(aNameUser);
-		LocationItemInventory aLocation = verifiedAlocation(aNameLocation);
-		insertInventoryItem(aHardwareDevice, aScgNumber, aNameItem, anUser,
-				aLocation, anInventoryDate, aPrice, aBudget, aGuarantee,
-				aGuaranteeEnd, aNote);
-	}
-
-	/*********** verifiedCategory **********/
-
-	private CategoryHardwareDevice verifiedCategory(String aNameCategory) {
+	public CategoryHardwareDevice verifiedCategory(String aNameCategory) {
 		CategoryHardwareDevice aCategory = getACategory(aNameCategory);
 		if (aCategory == null) {
 			aCategory = new CategoryHardwareDevice(aNameCategory);
@@ -39,9 +22,9 @@ public class InventoryAccess {
 		return aCategory;
 	}
 
-	/*********** verifiedType **********/
+	/**  verifiedType **/
 
-	private TypeHardwareDevice verifiedType(String aNameType,
+	public TypeHardwareDevice verifiedType(String aNameType,
 			CategoryHardwareDevice aCategory) {
 		TypeHardwareDevice aType = getAType(aNameType);
 		if (aType == null) {
@@ -51,9 +34,9 @@ public class InventoryAccess {
 		return aType;
 	}
 
-	/*********** verifiedHardwareDevice **********/
+	/**  verifiedHardwareDevice **/
 
-	private HardwareDevice verifiedHardwareDevice(TypeHardwareDevice aType,
+	public HardwareDevice verifiedHardwareDevice(TypeHardwareDevice aType,
 			String aDiskSize, String aMemorySize, int anIanNumber,
 			String aMacAddress, String aSerialNumber, String anIpAddress) {
 		HardwareDevice aHardwareDevice = getAHardwareDevice(aType, anIanNumber,
@@ -66,9 +49,9 @@ public class InventoryAccess {
 		return aHardwareDevice;
 	}
 
-	/*********** verifiedUser **********/
+	/**  verifiedUser **/
 
-	private User verifiedAnUser(String aNameUser) {
+	public User verifiedAnUser(String aNameUser) {
 		User anUser = getAnUser(aNameUser);
 		if (anUser == null) {
 			anUser = new User(aNameUser);
@@ -77,9 +60,9 @@ public class InventoryAccess {
 		return anUser;
 	}
 
-	/*********** verifiedLocation **********/
+	/**  verifiedLocation **/
 
-	private LocationItemInventory verifiedAlocation(String aNameLocation) {
+	public LocationItemInventory verifiedAlocation(String aNameLocation) {
 		LocationItemInventory aLocation = getAlocation(aNameLocation);
 		if (aLocation == null) {
 			aLocation = new LocationItemInventory(aNameLocation);
@@ -88,9 +71,9 @@ public class InventoryAccess {
 		return aLocation;
 	}
 
-	/*********** insertInventoryItem **********/
+	/**  insertInventoryItem **/
 
-	private void insertInventoryItem(HardwareDevice aHardwareDevice,
+	public void insertInventoryItem(HardwareDevice aHardwareDevice,
 			int aScgNumber, String aNameItem, User anUser,
 			LocationItemInventory aLocation, Calendar anInventoryDate,
 			float aPrice, String aBudget, String aGuarantee,
@@ -104,7 +87,7 @@ public class InventoryAccess {
 		}
 	}
 
-	/*********** getACategory **********/
+	/**  getACategory **/
 
 	private CategoryHardwareDevice getACategory(String aNameCategory) {
 		CategoryHardwareDevice aCategory = (CategoryHardwareDevice) accessAnObjectString(
@@ -112,7 +95,7 @@ public class InventoryAccess {
 		return aCategory;
 	}
 
-	/*********** getAType **********/
+	/**  getAType **/
 
 	private TypeHardwareDevice getAType(String aNameType) {
 		TypeHardwareDevice aType = (TypeHardwareDevice) accessAnObjectString(
@@ -120,14 +103,14 @@ public class InventoryAccess {
 		return aType;
 	}
 
-	/*********** getAnUser **********/
+	/**  getAnUser **/
 
 	private User getAnUser(String aNameUser) {
 		User anUser = (User) accessAnObjectString("User", "nameUser", aNameUser);
 		return anUser;
 	}
 
-	/*********** getALocation **********/
+	/**  getALocation **/
 
 	private LocationItemInventory getAlocation(String aNameLocation) {
 		LocationItemInventory aLocation = (LocationItemInventory) accessAnObjectString(
@@ -135,7 +118,7 @@ public class InventoryAccess {
 		return aLocation;
 	}
 
-	/*********** getAHardwareDevice **********/
+	/**  getAHardwareDevice **/
 
 	private HardwareDevice getAHardwareDevice(TypeHardwareDevice aType,
 			int anIanNumber, String anIpAddress, String aSerialNumber) {
@@ -144,7 +127,7 @@ public class InventoryAccess {
 		return aHardwareDevice;
 	}
 
-	/*********** getInventoryItem **********/
+	/**  getInventoryItem **/
 
 	private InventoryItem getAnInventoryItem(int aScgNumber) {
 		InventoryItem anInventoryItem = (InventoryItem) accessAnObjectInt(
@@ -153,7 +136,7 @@ public class InventoryAccess {
 
 	}
 
-	/*********** saveCategory **********/
+	/**  saveCategory **/
 
 	public void saveCategory(CategoryHardwareDevice aCategory) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -163,7 +146,7 @@ public class InventoryAccess {
 		session.getTransaction().commit();
 	}
 
-	/*********** saveType **********/
+	/**  saveType **/
 
 	public void saveType(TypeHardwareDevice aType,
 			CategoryHardwareDevice aCategory) {
@@ -177,7 +160,7 @@ public class InventoryAccess {
 		session.getTransaction().commit();
 	}
 
-	/*********** saveUser **********/
+	/**  saveUser **/
 
 	public void saveUser(User anUser) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -187,7 +170,7 @@ public class InventoryAccess {
 		session.getTransaction().commit();
 	}
 
-	/*********** saveLocation **********/
+	/**  saveLocation **/
 
 	public void saveLocation(LocationItemInventory aLocation) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -197,7 +180,7 @@ public class InventoryAccess {
 		session.getTransaction().commit();
 	}
 
-	/*********** saveInventoryItem **********/
+	/**  saveInventoryItem **/
 
 	public void saveInventoryItem(InventoryItem anInventoryItem) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -218,7 +201,7 @@ public class InventoryAccess {
 		session.getTransaction().commit();
 	}
 
-	/*********** saveHardwareDevice **********/
+	/**  saveHardwareDevice **/
 
 	public void saveHardwareDevice(HardwareDevice aHardwareDevice,
 			TypeHardwareDevice aType) {
@@ -237,7 +220,7 @@ public class InventoryAccess {
 		session.getTransaction().commit();
 	}
 
-	/*********** accessAnObjectInt **********/
+	/**  accessAnObjectInt **/
 
 	public Object accessAnObjectInt(String className, String variableName,
 			int variable) throws HibernateException {
@@ -258,7 +241,7 @@ public class InventoryAccess {
 		return result;
 	}
 
-	/*********** accessAnObjectString **********/
+	/**  accessAnObjectString **/
 
 	public Object accessAnObjectString(String className, String variableName,
 			String variable) throws HibernateException {
@@ -279,7 +262,7 @@ public class InventoryAccess {
 		return result;
 	}
 
-	/*********** accessAHardwareDevice **********/
+	/**  accessAHardwareDevice **/
 
 	private HardwareDevice accessAHarwareDevice(TypeHardwareDevice aType,
 			int anIanNumber, String anIpAddress, String aSerialNumber) {
@@ -315,7 +298,7 @@ public class InventoryAccess {
 	}
 	
 	
-	/*********** modifyCategory **********/
+	/**  modifyCategory **/
 
 	public void modifyCategory(String aNameCategory, String aNewNameCategory) {
 		CategoryHardwareDevice aCategory = getACategory(aNameCategory);
@@ -324,7 +307,7 @@ public class InventoryAccess {
 		}
 	}
 	
-	/*********** updateCategory **********/
+	/**  updateCategory **/
 
 	private void updateCategory(CategoryHardwareDevice aCategory, String aNewNameCategory) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -334,7 +317,7 @@ public class InventoryAccess {
 		session.getTransaction().commit();	
 	}
 	
-	/*********** modifyCategory **********/
+	/**  modifyCategory **/
 
 	public void modidyInventoryItem(int aScgNumber, int anIanNumber,
 			String aNameCategory, String aNameItem, String anIpAddress,
@@ -355,7 +338,7 @@ public class InventoryAccess {
 		}
 	}
 	
-	/*********** updateInventoryItem **********/
+	/**  updateInventoryItem **/
 
 	private void updateInventoryItem(InventoryItem anInventoryItem,
 			User anUser, LocationItemInventory aLocation,
@@ -378,7 +361,7 @@ public class InventoryAccess {
 		session.getTransaction().commit();	
 	}
 
-	/*********** removeCategory **********/
+	/**  removeCategory **/
 	
 	public void removeInventoryItem(int aScgNumber) {
 		InventoryItem anInventoryItem = getAnInventoryItem(aScgNumber);
@@ -387,7 +370,7 @@ public class InventoryAccess {
 		}
 	}
 	
-	/*********** deleteCategory **********/
+	/**  deleteCategory **/
 	
 	public void deleteInventoryItem(InventoryItem anInventoryItem) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();

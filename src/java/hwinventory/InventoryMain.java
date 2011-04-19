@@ -32,19 +32,30 @@ public class InventoryMain {
 		Calendar aGuaranteeEnd = new GregorianCalendar(2011,5,2);
 		String aNote = "Test 5";
 		
-		anInventoryAccess.addInventoryItem(aScgNumber, anIanNumber, aNameCategory,
-				aNameItem, anIpAddress, aMacAddress, aNameType, aDiskSize,
-				aMemorySize, aNameLocation, aNameUser, aPrice, anInventoryDate,
-				aBudget, aSerialNumber, aGuarantee, aGuaranteeEnd, aNote);
+		CategoryHardwareDevice aCategory = anInventoryAccess.verifiedCategory(aNameCategory);
 		
-		//anInventoryAccess.modifyCategory(aNameCategory, aNewNameCategory);
+		TypeHardwareDevice aType = anInventoryAccess.verifiedType(aNameType, aCategory);
+		
+		HardwareDevice aHardwareDevice = anInventoryAccess.verifiedHardwareDevice(aType, aDiskSize, aMemorySize
+				,anIanNumber, aMacAddress, aSerialNumber, anIpAddress);
+		
+		User anUser = anInventoryAccess.verifiedAnUser(aNameUser);
+		
+		LocationItemInventory aLocation = anInventoryAccess.verifiedAlocation(aNameLocation);
+		
+		anInventoryAccess.insertInventoryItem(aHardwareDevice, aScgNumber, aNameItem, anUser,
+				aLocation, anInventoryDate, aPrice, aBudget, aGuarantee,
+				aGuaranteeEnd, aNote);
+		
+		/**
+		anInventoryAccess.modifyCategory(aNameCategory, aNewNameCategory);
 		
 		anInventoryAccess.modidyInventoryItem(aScgNumber, anIanNumber, aNameCategory,
 				aNameItem, anIpAddress, aMacAddress, aNameType, aDiskSize,
 				aMemorySize, aNameLocation, aNameUser, aPrice, anInventoryDate,
 				aBudget, aSerialNumber, aGuarantee, aGuaranteeEnd, aNote);
 		
-		//anInventoryAccess.removeInventoryItem(aScgNumber);
-		
+		anInventoryAccess.removeInventoryItem(aScgNumber);
+		**/
 	}
 }
