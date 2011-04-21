@@ -10,9 +10,10 @@ import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 
-class UserDataView extends DataView{
+public class UserDataView extends DataView{
+	
 	public UserDataView(String id, IDataProvider aUserDataProvider) {
-	super(id, aUserDataProvider);
+		super(id, aUserDataProvider);
 	}
 	
 	// DataView calls this method for populating the table rows.

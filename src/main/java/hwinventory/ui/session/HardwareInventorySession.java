@@ -20,7 +20,6 @@ public class HardwareInventorySession extends WebSession {
 	
 	public User getUser() { 
 		return this.user;
-	
 	}
 	
 	public boolean isUserLoggedIn() {
