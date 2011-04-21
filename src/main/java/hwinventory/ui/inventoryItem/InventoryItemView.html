@@ -2,19 +2,22 @@
 	<head><title>Browse Item</title></head> 
 	<body> 
 		<form name="viewItemForm" wicket:id="itemForm">
-		<table cellspacing="0" class="dataview" border="1">
-			<tr> 
-				<th align="center">SCG Number</th> 
-				<th align="center">Item Name</th>
+			<table cellspacing="0" class="dataview" border="1">
+				<tr> 
+					<th align="center">SCG Number</th> 
+					<th align="center">Item Name</th>
+				</tr>
+			<tr wicket:id="items">
+				<td><span wicket:id="scgNumber">[scgNumber]</span></td>
+				<td><span wicket:id="nameItem">[nameItem]</span></td>
+			</tr> 
+			<tr>
+				<td><input type="submit" value="Add new Item" wicket:id="addNewItem"/></td>
+				</tr>
+			</table> 
+			<tr>
+				<td><input type="submit" value="Go User" wicket:id="goUser"/></td>
 			</tr>
-		<tr wicket:id="items">
-			<td><span wicket:id="scgNumber">[scgNumber]</span></td>
-			<td><span wicket:id="nameItem">[nameItem]</span></td>
-		</tr> 
-		<tr>
-			<td><input type="submit" value="Add new Item" wicket:id="addNewItem"/></td>
-			</tr>
-		</table> 
-		</form>
+			</form>
 	</body> 
 </html>

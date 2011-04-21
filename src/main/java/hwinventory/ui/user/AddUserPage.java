@@ -1,4 +1,4 @@
-package hwinventory.ui;
+package hwinventory.ui.user;
 
 import hwinventory.domain.InventoryAccess;
 import hwinventory.domain.User;
