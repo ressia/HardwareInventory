@@ -1,6 +1,7 @@
 package hwinventory.ui.login;
 
 import hwinventory.ui.inventoryItem.InventoryItemView;
+import hwinventory.ui.user.ViewUserPage;
 import hwinventory.ui.welcome.Welcome;
 
 import org.apache.wicket.markup.html.WebPage;
@@ -41,8 +42,10 @@ public class Login extends WebPage {
 				/*Welcome welcomePage = new Welcome(); 
 				welcomePage.setUserId(userId); 
 				setResponsePage(welcomePage);*/
-				InventoryItemView aInventoryItemView = new InventoryItemView();  
-				setResponsePage(aInventoryItemView);
+				//InventoryItemView aInventoryItemView = new InventoryItemView();  
+				//setResponsePage(aInventoryItemView);
+				ViewUserPage aViewUserPage = new ViewUserPage();
+				setResponsePage(aViewUserPage);
 			} else {
 				String errMsg = getLocalizer().getString(
 					"login.errors.invalidCredentials ", Login.this,"Unable to sign you in");

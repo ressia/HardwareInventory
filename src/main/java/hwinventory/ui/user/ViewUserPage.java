@@ -20,7 +20,7 @@ public class ViewUserPage extends WebPage {
 	    {
 		Form form = new Form("userForm");
 		UserDataProvider aUserDataProvider = new UserDataProvider();
-		UserDataView users = new UserDataView("users", aUserDataProvider);
+		final DataView users = new UserDataView("users", aUserDataProvider);
 		form.add(users);
 		form.add(new Button("addUser") {
 			public void onSubmit() {

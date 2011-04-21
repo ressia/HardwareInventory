@@ -311,8 +311,20 @@ public class InventoryAccess {
 		return result;
 	}
 	
+	/**
+	 * getAllItems
+	 * @return
+	 */
 	public List getAllItems() {
 		return listObject("InventoryItem");
+	}
+	
+	/**
+	 * getAllUsers
+	 * @return
+	 */
+	public List getAllUsers() {
+		return listObject("User");
 	}
 	
 	/**
@@ -394,6 +406,15 @@ public class InventoryAccess {
 		} finally {
 		}
 		return result;
+	}
+	
+	/**
+	 * getAUser
+	 * @param anIdUser
+	 * @return
+	 */
+	public Object getAUser(Long anIdUser) {
+		return accessAnObjectLong("User", "idUser", anIdUser);
 	}
 
 	/**

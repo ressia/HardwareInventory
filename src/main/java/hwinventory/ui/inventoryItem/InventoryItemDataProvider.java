@@ -26,9 +26,7 @@ public class InventoryItemDataProvider implements IDataProvider {
 		}
 
 		@Override
-		public void detach() {
-			// TODO Auto-generated method stub
-			
+		public void detach() {			
 		}
 	
 }
