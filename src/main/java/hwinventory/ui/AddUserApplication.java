@@ -1,6 +1,6 @@
 package hwinventory.ui;
 
-import hwinventory.ui.user.ViewUserPage;
+import hwinventory.ui.user.UserView;
 
 import org.apache.wicket.protocol.http.WebApplication;
 
@@ -11,6 +11,6 @@ public class AddUserApplication extends WebApplication {
     
     @Override
     public Class getHomePage() {
-        return ViewUserPage.class;
+        return UserView.class;
     }
 }

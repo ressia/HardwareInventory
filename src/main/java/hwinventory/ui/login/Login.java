@@ -1,7 +1,7 @@
 package hwinventory.ui.login;
 
 import hwinventory.ui.inventoryItem.InventoryItemView;
-import hwinventory.ui.user.ViewUserPage;
+import hwinventory.ui.user.UserView;
 import hwinventory.ui.welcome.Welcome;
 
 import org.apache.wicket.markup.html.WebPage;
@@ -44,7 +44,7 @@ public class Login extends WebPage {
 				setResponsePage(welcomePage);*/
 				//InventoryItemView aInventoryItemView = new InventoryItemView();  
 				//setResponsePage(aInventoryItemView);
-				ViewUserPage aViewUserPage = new ViewUserPage();
+				UserView aViewUserPage = new UserView();
 				setResponsePage(aViewUserPage);
 			} else {
 				String errMsg = getLocalizer().getString(
