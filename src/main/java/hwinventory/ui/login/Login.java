@@ -1,6 +1,8 @@
 package hwinventory.ui.login;
 
+import hwinventory.domain.User;
 import hwinventory.ui.inventoryItem.InventoryItemView;
+import hwinventory.ui.session.HardwareInventorySession;
 import hwinventory.ui.user.UserDataView;
 import hwinventory.ui.user.UserView;
 import hwinventory.ui.welcome.Welcome;
@@ -39,10 +41,13 @@ public class Login extends WebPage {
 		@Override public void onSubmit() {
 			String userId = Login.this.getUserId(); 
 			String password = Login.this.getPassword(); 
+			HardwareInventorySession session = (HardwareInventorySession)getSession();
 			if (authenticate(userId, password)) {
-				/*Welcome welcomePage = new Welcome(); 
-				welcomePage.setUserId(userId); 
-				setResponsePage(welcomePage);*/
+				/*
+				 * This is wrong we should use another user than the inventory user!!!!
+				 */
+				User loggedInUser = new User(userId);
+				session.setUser(loggedInUser);
 				InventoryItemView aInventoryItemView = new InventoryItemView();  
 				setResponsePage(aInventoryItemView);
 			} else {

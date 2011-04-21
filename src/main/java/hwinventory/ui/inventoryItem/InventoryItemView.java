@@ -2,6 +2,7 @@ package hwinventory.ui.inventoryItem;
 
 
 import hwinventory.ui.user.UserView;
+import hwinventory.ui.webpage.SecureWebPage;
 
 
 import org.apache.wicket.markup.html.WebPage;
@@ -9,7 +10,7 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.repeater.data.DataView;
 
-public class InventoryItemView extends WebPage {
+public class InventoryItemView extends SecureWebPage {
 
 	public InventoryItemView() {
 		final Form form = new Form("itemForm"); 
