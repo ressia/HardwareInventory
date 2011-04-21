@@ -1,6 +1,9 @@
 package hwinventory.ui.user;
 
+import hwinventory.domain.InventoryAccess;
 import hwinventory.domain.User;
+import hwinventory.ui.inventoryItem.InventoryItemView;
+import hwinventory.ui.login.Login;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
@@ -17,14 +20,23 @@ public class UserDataView extends DataView{
 		super(id, aUserDataProvider);
 	}
 	
-	// DataView calls this method for populating the table rows.
-
 	protected void populateItem(final Item item) {
 		User aUser = (User) item.getModelObject();
 		item.setModel(new CompoundPropertyModel(aUser));
 		item.add(new Label("nameUser"));
 		item.add(new Link("linkToDelete") {
 			public void onClick() {
+	    		User aUser = (User)item.getModelObject();
+	    		InventoryAccess anInventoryAccess = new InventoryAccess();
+	    		try {
+		    		anInventoryAccess.removeUser(aUser.getNameUser()); 	
+		    		UserView aUserView = new UserView(); 
+					setResponsePage(aUserView);
+	    		} catch(Exception e) {
+	    			String errMsg = getLocalizer().getString(
+	    					"login.errors.invalidCredentials ", UserDataView.this,"Unable to delete user.");
+	    			error(errMsg);
+	    		}
 			}
 		});
 		item.add(new Link("linkToEdit") {

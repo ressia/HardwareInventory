@@ -579,4 +579,26 @@ public class InventoryAccess {
 		session.delete(anInventoryItem);
 		session.getTransaction().commit();	
 	}
+	
+	/**
+	 * removeUser
+	 * @param aNameUser
+	 */
+	public void removeUser(String aNameUser) {
+		User aUser = getAUser(aNameUser);
+		if (aUser != null) {
+			deleteUser(aUser);
+		}
+	}
+	
+	/**
+	 * deleteUser
+	 * @param aUser
+	 */
+	public void deleteUser(User aUser) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		session.delete(aUser);
+		session.getTransaction().commit();	
+	}
 }
