@@ -23,7 +23,8 @@ public class UserView extends WebPage {
 		form.add(users);
 		form.add(new Button("addUser") {
 			public void onSubmit() {
-				System.out.println("Need to implement add user");
+				AddUserPage anAddUserPage = new AddUserPage();
+				setResponsePage(anAddUserPage);
 			}
 		});
 		add(form);

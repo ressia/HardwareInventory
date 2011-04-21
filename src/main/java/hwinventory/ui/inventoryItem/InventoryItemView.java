@@ -24,8 +24,8 @@ public class InventoryItemView extends WebPage {
 		});
 		form.add(new Button("goUser") {
 			public void onSubmit() {
-				UserView aViewUserPage = new UserView();
-				setResponsePage(aViewUserPage);
+				UserView aUserView = new UserView();
+				setResponsePage(aUserView);
 			}
 		});
 		add(form);
