@@ -4,6 +4,7 @@ import hwinventory.domain.User;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
@@ -22,5 +23,13 @@ public class UserDataView extends DataView{
 		User aUser = (User) item.getModelObject();
 		item.setModel(new CompoundPropertyModel(aUser));
 		item.add(new Label("nameUser"));
+		item.add(new Link("linkToDelete") {
+			public void onClick() {
+			}
+		});
+		item.add(new Link("linkToEdit") {
+			public void onClick() {
+			}
+		});
 	}
 }
