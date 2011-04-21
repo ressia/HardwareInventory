@@ -3,6 +3,7 @@ package hwinventory.ui.user;
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
+import org.apache.wicket.model.ComponentDetachableModel;
 
 import hwinventory.domain.InventoryAccess;
 import hwinventory.domain.User;
@@ -32,7 +33,6 @@ public class DetachableUserModel extends LoadableDetachableModel {
 	/**
 	* Returns null to indicate there is no nested model
 	*/
-	@Override
 	public IModel getNestedModel() {
 		return null;
 	}
@@ -43,7 +43,7 @@ public class DetachableUserModel extends LoadableDetachableModel {
 	*/
 	@Override
 	protected void onAttach() {
-		user = anInventoryAccess.accessAnObjectInt("User", "idUser", id);
+		aUser = (User) anInventoryAccess.accessAnObjectLong("User", "idUser", id);
 	}
 	/**
 	* Clear the reference to the contact when the model is
@@ -60,7 +60,6 @@ public class DetachableUserModel extends LoadableDetachableModel {
 	* The component asking for the object
 	* @return The detachable object.
 	*/
-	@Override
 	protected Object onGetObject(Component component) {
 		return aUser;
 	}

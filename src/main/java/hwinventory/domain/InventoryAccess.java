@@ -364,6 +364,33 @@ public class InventoryAccess {
 		}
 		return result;
 	}
+	
+	/**
+	 * accessAnObjectLong
+	 * @param className
+	 * @param variableName
+	 * @param variable
+	 * @return
+	 * @throws HibernateException
+	 */
+	public Object accessAnObjectLong(String className, String variableName,
+			Long variable) throws HibernateException {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		Object result = null;
+		try {
+			result = session
+					.createQuery(
+							"from " + className + " c where c." + variableName
+									+ "= :name").setParameter("name", variable)
+					.uniqueResult();
+			session.getTransaction().commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+		}
+		return result;
+	}
 
 	/**
 	 * accessAHardwareDevice
