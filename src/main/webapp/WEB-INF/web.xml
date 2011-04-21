@@ -6,15 +6,15 @@
 <web-app>
     <display-name>Hardware Inventory</display-name>
     <filter>
-        <filter-name>AddUserApplication</filter-name>
+        <filter-name>HarwareInventoryApplication</filter-name>
         <filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
         <init-param>
           <param-name>applicationClassName</param-name>
-          <param-value>hwinventory.ui.login.LoginApplication</param-value>
+          <param-value>hwinventory.ui.application.HarwareInventoryApplication</param-value>
         </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>AddUserApplication</filter-name>
+        <filter-name>HarwareInventoryApplication</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 </web-app>
