@@ -311,6 +311,10 @@ public class InventoryAccess {
 		return result;
 	}
 	
+	public List getAllItems() {
+		return listObject("InventoryItem");
+	}
+	
 	/**
 	 * accessAnObjectInt
 	 * @param className
