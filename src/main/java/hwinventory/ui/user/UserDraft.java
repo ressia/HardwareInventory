@@ -1,4 +1,4 @@
-package hwinventory.ui;
+package hwinventory.ui.user;
 
 public class UserDraft {
 

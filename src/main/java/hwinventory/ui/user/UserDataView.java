@@ -11,7 +11,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 
 public class UserDataView extends DataView{
-	
+
 	public UserDataView(String id, IDataProvider aUserDataProvider) {
 		super(id, aUserDataProvider);
 	}
