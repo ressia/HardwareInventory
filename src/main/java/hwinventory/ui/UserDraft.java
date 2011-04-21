@@ -11,5 +11,4 @@ public class UserDraft {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 }

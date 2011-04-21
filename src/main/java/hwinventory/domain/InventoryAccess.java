@@ -3,6 +3,8 @@ package hwinventory.domain;
 import hwinventory.db.HibernateUtil;
 
 import java.util.Calendar;
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -287,6 +289,27 @@ public class InventoryAccess {
 		session.getTransaction().commit();
 	}
 
+	/**
+	 * listObject
+	 * @param className
+	 * @param variableName
+	 * @param variable
+	 * @return
+	 * @throws HibernateException
+	 */
+	public List listObject(String className) throws HibernateException {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		List result = null;
+		try {
+			result = session.createQuery("from " + className).list();
+			session.getTransaction().commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+		}
+		return result;
+	}
 	
 	/**
 	 * accessAnObjectInt
