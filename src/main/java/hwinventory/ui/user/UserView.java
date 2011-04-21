@@ -3,6 +3,7 @@ package hwinventory.ui.user;
 import java.util.List;
 
 import hwinventory.domain.InventoryAccess;
+import hwinventory.ui.inventoryItem.InventoryItemView;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.WebPage;
@@ -23,8 +24,15 @@ public class UserView extends WebPage {
 		form.add(users);
 		form.add(new Button("addUser") {
 			public void onSubmit() {
-				System.out.println("Need to implement add user");
+				AddUserPage anAddUserPage = new AddUserPage();
+				setResponsePage(anAddUserPage);
 			}
+		});
+		form.add(new Button("backItem") {
+			public void onSubmit() {
+				InventoryItemView aInventoryItemView = new InventoryItemView();  
+				setResponsePage(aInventoryItemView);
+				}
 		});
 		add(form);
 	 }	
