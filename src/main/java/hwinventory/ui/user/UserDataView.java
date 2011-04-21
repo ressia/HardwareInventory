@@ -6,7 +6,6 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
-import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 
@@ -20,7 +19,7 @@ class UserDataView extends DataView{
 	protected void populateItem(final Item item) {
 		User aUser = (User) item.getModelObject();
 		item.setModel(new CompoundPropertyModel(aUser));
-		item.add(new Label("name"));
+		item.add(new Label("nameUser"));
 		item.add(new CheckBox("selected",new Model("")));
 	}
 }
