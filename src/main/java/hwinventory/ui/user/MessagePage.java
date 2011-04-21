@@ -1,6 +1,7 @@
 package hwinventory.ui.user;
 
 import hwinventory.ui.inventoryItem.InventoryItemView;
+import hwinventory.ui.webpage.SecureWebPage;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
@@ -8,7 +9,7 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.repeater.data.DataView;
 
-public class MessagePage extends WebPage {
+public class MessagePage extends SecureWebPage {
 	public MessagePage(){
 		Form form = new Form("msgForm");
 		form.add(new Label("message","User added"));

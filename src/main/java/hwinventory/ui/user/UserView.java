@@ -5,6 +5,7 @@ import java.util.List;
 import hwinventory.domain.InventoryAccess;
 import hwinventory.ui.inventoryItem.InventoryItemView;
 import hwinventory.ui.login.Login;
+import hwinventory.ui.webpage.SecureWebPage;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.WebPage;
@@ -17,7 +18,7 @@ import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
 
 
-public class UserView extends WebPage {
+public class UserView extends SecureWebPage {
 	
 	public UserView() {
 		FeedbackPanel feedback = new FeedbackPanel("feedback");

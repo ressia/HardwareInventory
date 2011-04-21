@@ -3,6 +3,8 @@ package hwinventory.ui.application;
 import hwinventory.ui.inventoryItem.InventoryItemView;
 import hwinventory.ui.login.Login;
 import hwinventory.ui.session.HardwareInventorySession;
+import hwinventory.ui.user.AddUserPage;
+import hwinventory.ui.user.UserView;
 
 import org.apache.wicket.Request;
 import org.apache.wicket.Response;
@@ -19,8 +21,9 @@ public class HarwareInventoryApplication extends WebApplication {
 		//mount("/pages", PackageName.forPackage(Login.class.getPackage()));
 		mountBookmarkablePage("/login", Login.class); 
 		mountBookmarkablePage("/inventoryItem", InventoryItemView.class);
+		mountBookmarkablePage("/userView", UserView.class);
+		mountBookmarkablePage("/addUser", AddUserPage.class);
 	}
-
 	
 	public Session newSession(Request request, Response response) {
 		return new HardwareInventorySession(request);

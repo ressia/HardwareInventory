@@ -2,6 +2,7 @@ package hwinventory.ui.user;
 
 import hwinventory.domain.InventoryAccess;
 import hwinventory.domain.User;
+import hwinventory.ui.webpage.SecureWebPage;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
@@ -9,7 +10,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 
-public class AddUserPage extends WebPage {
+public class AddUserPage extends SecureWebPage {
 	
     public AddUserPage() {
     	UserDraft aUserDraft = new UserDraft();
