@@ -3,7 +3,6 @@ package hwinventory.ui.user;
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
-import org.apache.wicket.model.ComponentDetachableModel;
 
 import hwinventory.domain.InventoryAccess;
 import hwinventory.domain.User;
@@ -63,7 +62,7 @@ public class DetachableUserModel extends LoadableDetachableModel {
 	protected Object onGetObject(Component component) {
 		return aUser;
 	}
-	
+
 	@Override
 	protected Object load() {
 		// TODO Auto-generated method stub

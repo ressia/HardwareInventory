@@ -1,6 +1,6 @@
 package hwinventory.ui.user;
 
-import hwinventory.ui.UserDraft;
+import hwinventory.domain.User;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
@@ -18,9 +18,9 @@ class UserDataView extends DataView{
 	// DataView calls this method for populating the table rows.
 
 	protected void populateItem(final Item item) {
-	UserDraft aUserDraft = (UserDraft) item.getModelObject();
-	item.setModel(new CompoundPropertyModel(aUserDraft));
-	item.add(new Label("name"));
-	item.add(new CheckBox("selected",new Model("")));
+		User aUser = (User) item.getModelObject();
+		item.setModel(new CompoundPropertyModel(aUser));
+		item.add(new Label("name"));
+		item.add(new CheckBox("selected",new Model("")));
 	}
 }
