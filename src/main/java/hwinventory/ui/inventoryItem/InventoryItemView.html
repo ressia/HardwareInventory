@@ -1,23 +1,35 @@
 <html>
-	<head><title>Browse Item</title></head> 
-	<body> 
-		<form name="viewItemForm" wicket:id="itemForm">
-			<table cellspacing="0" class="dataview" border="1">
-				<tr> 
-					<th align="center">SCG Number</th> 
-					<th align="center">Item Name</th>
-				</tr>
-			<tr wicket:id="items">
-				<td><span wicket:id="scgNumber">[scgNumber]</span></td>
-				<td><span wicket:id="nameItem">[nameItem]</span></td>
-			</tr> 
-			<tr>
-				<td><input type="submit" value="Add new Item" wicket:id="addNewItem"/></td>
-				</tr>
-			</table> 
-			<tr>
-				<td><input type="submit" value="Go User" wicket:id="goUser"/></td>
-			</tr>
-			</form>
-	</body> 
+<head>
+<title>Browse Item</title>
+</head>
+<body style="background-color: #ACB0BC">
+<form name="viewItemForm" wicket:id="itemForm">
+<h2><code style="font-family: verdana; color: #E0528A">Inventory
+Item</code></h2>
+<img border="0" src="images/inventory.jpg" alt="Inventory item"
+	width="132" height="132" />
+<table style="background-color: #C6EADC" align="center" cellspacing="0" class="dataview" border="1">
+	<tr>
+		<th><code style="font-family: verdana; color: #516F71" align="center">SCG
+		Number</code></th>
+		<th><code style="font-family: verdana; color: #516F71" align="center">Item
+		Name</code></th>
+	</tr>
+	<tr wicket:id="items">
+		<td><span wicket:id="scgNumber">[scgNumber]</span></td>
+		<td><span wicket:id="nameItem">[nameItem]</span></td>
+	</tr>
+</table>
+<tr>
+<tr>
+	<td><input type="submit" value="Add new Item"
+		wicket:id="addNewItem" /></td>
+</tr>
+<tr>
+	<td><input type="submit" value="Go User"
+		wicket:id="goUser" /></td>
+</tr>
+</tr>
+</form>
+</body>
 </html>

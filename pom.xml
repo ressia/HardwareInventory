@@ -12,7 +12,7 @@
 	    </repository>
 	  </repositories>
 
-    <groupId>hwinventory.domain</groupId>
+    <groupId>hwinventory</groupId>
     <artifactId>HardwareInventory</artifactId>
 	<packaging>war</packaging>
     <version>1.0.0-SNAPSHOT</version>
@@ -33,7 +33,7 @@
 			<resource>
             	<filtering>false</filtering>
                 <directory>src/main/resources</directory>
-            </resource>
+             </resource>
            	<resource>
             	<filtering>false</filtering>
                 <directory>src/main/webapp</directory>
@@ -65,10 +65,6 @@
 
 		</plugins>
 		
-		
-
-		
- 
  		<finalName>${project.artifactId}</finalName>
 	</build>
 
