@@ -12,7 +12,7 @@
 
         <property name="nameType" column="TYPE_NAME"/>
 
-    	<many-to-one name="category" class="CategoryHardwareDevice" column="CATEGORY_ID" not-null="true"/>
+    	<many-to-one name="category" class="CategoryHardwareDevice" column="CATEGORY_ID" lazy="false" not-null="true"/>
 
 	</class>
 

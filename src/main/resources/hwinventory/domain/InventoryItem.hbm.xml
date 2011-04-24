@@ -19,9 +19,9 @@
     	<property name="guaranteeEnd" column="ITEM_GUARANTEE_END"/>
     	<property name="note" column="ITEM_NOTE"/>
     	
-        <many-to-one name="user" class="User" column="USER_ID" not-null="true"/>
-        <many-to-one name="hardwareDevice" class="HardwareDevice" column="DEVICE_ID" not-null="true"/>
-        <many-to-one name="location" class="LocationItemInventory" column="LOCATION_ID" not-null="true"/>
+        <many-to-one name="user" class="User" column="USER_ID" lazy="false" not-null="true"/>
+        <many-to-one name="hardwareDevice" class="HardwareDevice" column="DEVICE_ID" lazy="false" not-null="true"/>
+        <many-to-one name="location" class="LocationItemInventory" column="LOCATION_ID" lazy="false" not-null="true"/>
    
 	</class>
 

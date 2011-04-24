@@ -123,6 +123,10 @@ public class InventoryItem implements Serializable {
 	public Calendar getGuaranteeEnd() {
 		return guaranteeEnd;
 	}
+	
+	public String getGuaranteeEndAsString() {
+		return guaranteeEnd.toString();
+	}
 
 	public void setGuaranteeEnd(Calendar guaranteeEnd) {
 		this.guaranteeEnd = guaranteeEnd;

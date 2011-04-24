@@ -1,35 +1,56 @@
 <html>
-<head>
-<title>Browse Item</title>
-</head>
-<body style="background-color: #ACB0BC">
-<form name="viewItemForm" wicket:id="itemForm">
-<h2><code style="font-family: verdana; color: #E0528A">Inventory
-Item</code></h2>
-<img border="0" src="images/inventory.jpg" alt="Inventory item"
-	width="132" height="132" />
-<table style="background-color: #C6EADC" align="center" cellspacing="0" class="dataview" border="1">
-	<tr>
-		<th><code style="font-family: verdana; color: #516F71" align="center">SCG
-		Number</code></th>
-		<th><code style="font-family: verdana; color: #516F71" align="center">Item
-		Name</code></th>
-	</tr>
-	<tr wicket:id="items">
-		<td><span wicket:id="scgNumber">[scgNumber]</span></td>
-		<td><span wicket:id="nameItem">[nameItem]</span></td>
-	</tr>
-</table>
-<tr>
-<tr>
-	<td><input type="submit" value="Add new Item"
-		wicket:id="addNewItem" /></td>
-</tr>
-<tr>
-	<td><input type="submit" value="Go User"
-		wicket:id="goUser" /></td>
-</tr>
-</tr>
-</form>
-</body>
+	<head>
+		<title>Browse Item</title>
+		<link rel="stylesheet" type="text/css" href="styles/InventoryItem.css"/>
+	</head> 
+	<body class="body"> 
+		<form class="form" name="viewItemForm" wicket:id="itemForm">
+			<table class="table">
+				<tr>  
+					<th class="borderedTittleTable">Type Hardware</th>
+					<th class="borderedTittleTable">Disk</th> 
+					<th class="borderedTittleTable">Memory</th> 
+					<th class="borderedTittleTable">Iam Number</th> 
+					<th class="borderedTittleTable">Mac Address</th> 
+					<th class="borderedTittleTable">Serial Number</th> 
+					<th class="borderedTittleTable">Ip Address</th> 
+					<th class="borderedTittleTable">SCG Number</th> 
+					<th class="borderedTittleTable">Item Name</th>
+					<th class="borderedTittleTable">User</th>
+					<th class="borderedTittleTable">Location</th>
+					<th class="borderedTittleTable">Inventory Date</th>								
+					<th class="borderedTittleTable">Price</th>
+					<th class="borderedTittleTable">Budget</th>
+					<th class="borderedTittleTable">Guarantee End</th>
+					<th class="borderedTittleTable">Guarantee</th>
+					<th class="borderedTittleTable">Note</th>
+				</tr>
+				<tr wicket:id="items">
+					<td class="borderedTable"><span class="spanText" wicket:id="hardwareDevice.type.nameType">[nameType]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="hardwareDevice.diskSize">[diskSize]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="hardwareDevice.memorySize">[memorySize]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="hardwareDevice.ianNumber">[ianNumber]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="hardwareDevice.macAddress">[macAddress]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="hardwareDevice.serialNumber">[serialNumber]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="hardwareDevice.ipAddress">[ipAddress]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="scgNumber">[scgNumber]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="nameItem">[nameItem]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="user.nameUser">[nameUser]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="location.nameLocation">[nameLocation]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="inventoryDate">[inventoryDate]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="price">[price]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="budget">[budget]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="guaranteeEnd">[guaranteeEnd]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="guarantee">[guarantee]</span></td>
+					<td class="borderedTable"><span class="spanText" wicket:id="note">[note]</span></td>					
+				</tr> 
+			</table> 
+			<tr>
+				<td><input class="buttonAddItem" type="submit" value="Add new Item" wicket:id="addNewItem"/></td>
+			</tr>
+			<tr>
+				<td><input class="buttonGoUser" type="submit" value="Go User" wicket:id="goUser"/></td>
+			</tr>
+			</form>
+	</body> 
 </html>

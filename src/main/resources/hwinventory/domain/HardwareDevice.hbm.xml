@@ -17,7 +17,7 @@
     	<property name="serialNumber" column="SERIAL_NUMBER"/>
     	<property name="ipAddress" column="IP_ADDRESS"/>
 
-		<many-to-one name="type" class="TypeHardwareDevice" column="TYPE_ID" not-null="true"/>
+		<many-to-one name="type" class="TypeHardwareDevice" column="TYPE_ID" lazy="false" not-null="true"/>
 	</class>
 
 </hibernate-mapping>
