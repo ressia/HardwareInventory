@@ -1,9 +1,10 @@
 package hwinventory.ui.inventoryItem;
 
-import hwinventory.domain.InventoryAccess;
+import hwinventory.ui.application.HardwareInventoryApplication;
 
 import java.util.Iterator;
 
+import org.apache.wicket.Application;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
@@ -14,11 +15,11 @@ public class InventoryItemDataProvider implements IDataProvider {
 		}
 		
 		public Iterator iterator(final int first, final int count){ 
-			return (new InventoryAccess()).getAllItems().iterator();
+			return ((HardwareInventoryApplication)Application.get()).getSystem().getHardwareInventoryDAO().getAllItems().iterator();
 		}
 		 
 		public int size(){
-			return (new InventoryAccess()).getAllItems().size();
+			return ((HardwareInventoryApplication)Application.get()).getSystem().getHardwareInventoryDAO().getAllItems().size();
 		}
 		
 		public IModel model(Object object){

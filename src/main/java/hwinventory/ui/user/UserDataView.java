@@ -1,10 +1,13 @@
 package hwinventory.ui.user;
 
-import hwinventory.domain.InventoryAccess;
+import hwinventory.dao.HardwareInventoryDAO;
+import hwinventory.dao.InventoryAccess;
 import hwinventory.domain.User;
+import hwinventory.ui.application.HardwareInventoryApplication;
 import hwinventory.ui.inventoryItem.InventoryItemView;
 import hwinventory.ui.login.Login;
 
+import org.apache.wicket.Application;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.link.Link;
@@ -16,6 +19,9 @@ import org.apache.wicket.model.Model;
 
 public class UserDataView extends DataView{
 
+	
+	private HardwareInventoryDAO aDAO = ((HardwareInventoryApplication)Application.get()).getSystem().getHardwareInventoryDAO();
+	
 	public UserDataView(String id, IDataProvider aUserDataProvider) {
 		super(id, aUserDataProvider);
 	}
@@ -27,9 +33,8 @@ public class UserDataView extends DataView{
 		item.add(new Link("linkToDelete") {
 			public void onClick() {
 	    		User aUser = (User)item.getModelObject();
-	    		InventoryAccess anInventoryAccess = new InventoryAccess();
 	    		try {
-		    		anInventoryAccess.removeUser(aUser.getNameUser()); 	
+	    			aDAO.removeUser(aUser.getNameUser()); 	
 		    		UserView aUserView = new UserView(); 
 					setResponsePage(aUserView);
 	    		} catch(Exception e) {

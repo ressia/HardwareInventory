@@ -1,5 +1,8 @@
 package hwinventory.ui.application;
 
+import hwinventory.dao.InventoryAccess;
+import hwinventory.dao.NotPersistentDAO;
+import hwinventory.system.HardwareInventorySystem;
 import hwinventory.ui.inventoryItem.InventoryItemView;
 import hwinventory.ui.login.Login;
 import hwinventory.ui.session.HardwareInventorySession;
@@ -11,9 +14,13 @@ import org.apache.wicket.Response;
 import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebApplication;
 
-public class HarwareInventoryApplication extends WebApplication {
+public class HardwareInventoryApplication extends WebApplication {
 	
-	public HarwareInventoryApplication() {
+	private HardwareInventorySystem aSystem;
+
+	public HardwareInventoryApplication() {
+		aSystem = new HardwareInventorySystem(new InventoryAccess());
+		//aSystem = new HardwareInventorySystem(new NotPersistentDAO());
 	}
 	
 	public void init(){
@@ -31,5 +38,9 @@ public class HarwareInventoryApplication extends WebApplication {
 	
 	public Class getHomePage(){ 
 		return Login.class;
+	}
+	
+	public HardwareInventorySystem getSystem() {
+		return aSystem;
 	}
 }

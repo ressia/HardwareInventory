@@ -1,6 +1,12 @@
-package hwinventory.domain;
+package hwinventory.dao;
 
 import hwinventory.db.HibernateUtil;
+import hwinventory.domain.CategoryHardwareDevice;
+import hwinventory.domain.HardwareDevice;
+import hwinventory.domain.InventoryItem;
+import hwinventory.domain.LocationItemInventory;
+import hwinventory.domain.TypeHardwareDevice;
+import hwinventory.domain.User;
 
 import java.util.Calendar;
 import java.util.List;
@@ -8,7 +14,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-public class InventoryAccess {
+public class InventoryAccess extends HardwareInventoryDAO {
 
 	
 	/**

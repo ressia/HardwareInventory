@@ -1,10 +1,8 @@
 package hwinventory.ui.user;
 
-import hwinventory.domain.InventoryAccess;
-import hwinventory.domain.User;
+import hwinventory.dao.HardwareInventoryDAO;
+import hwinventory.ui.application.HardwareInventoryApplication;
 import hwinventory.ui.webpage.SecureWebPage;
-
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
@@ -30,8 +28,8 @@ public class AddUserPage extends SecureWebPage {
     	@Override 
     	public void onSubmit() {
     		UserDraft aUserDraftModel = (UserDraft)getModelObject();
-    		InventoryAccess anInventoryAccess = new InventoryAccess();
-    		anInventoryAccess.addUser(aUserDraftModel.getName());
+    		HardwareInventoryDAO aDAO = ((HardwareInventoryApplication)getApplication()).getSystem().getHardwareInventoryDAO();
+    		aDAO.addUser(aUserDraftModel.getName());
     		MessagePage messagePage = new MessagePage();
     		setResponsePage(messagePage);
     	}

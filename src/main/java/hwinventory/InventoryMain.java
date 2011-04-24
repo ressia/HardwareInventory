@@ -3,6 +3,7 @@ package hwinventory;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import hwinventory.dao.InventoryAccess;
 import hwinventory.domain.*;
 
 public class InventoryMain {

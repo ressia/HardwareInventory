@@ -2,7 +2,7 @@ package hwinventory.ui.user;
 
 import java.util.List;
 
-import hwinventory.domain.InventoryAccess;
+import hwinventory.dao.InventoryAccess;
 import hwinventory.ui.inventoryItem.InventoryItemView;
 import hwinventory.ui.login.Login;
 import hwinventory.ui.webpage.SecureWebPage;
