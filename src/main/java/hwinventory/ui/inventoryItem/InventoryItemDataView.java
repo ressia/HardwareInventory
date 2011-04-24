@@ -1,8 +1,6 @@
 package hwinventory.ui.inventoryItem;
 
 import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-
 import hwinventory.domain.InventoryItem;
 
 import org.apache.wicket.markup.html.basic.Label;
