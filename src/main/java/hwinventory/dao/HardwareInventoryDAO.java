@@ -16,7 +16,6 @@ import org.hibernate.Session;
 
 public abstract class HardwareInventoryDAO {
 
-
 	public abstract CategoryHardwareDevice addCategory(String aNameCategory);
 	
 	public abstract TypeHardwareDevice addType(String aNameType, CategoryHardwareDevice aCategory);
@@ -35,8 +34,7 @@ public abstract class HardwareInventoryDAO {
 			float aPrice, String aBudget, String aGuarantee,
 			Calendar aGuaranteeEnd, String aNote);
 
-	public abstract void saveCategory(CategoryHardwareDevice aCategory);
-
+	/*public abstract void saveCategory(CategoryHardwareDevice aCategory);
 
 	public abstract void saveType(TypeHardwareDevice aType,
 			CategoryHardwareDevice aCategory);
@@ -48,16 +46,13 @@ public abstract class HardwareInventoryDAO {
 	public abstract void saveHardwareDevice(HardwareDevice aHardwareDevice,
 			TypeHardwareDevice aType);
 
-	public abstract void saveInventoryItem(InventoryItem anInventoryItem);
+	public abstract void saveInventoryItem(InventoryItem anInventoryItem);*/
 
-	public abstract List listObject(String className) throws HibernateException;
+	public abstract List listObject(String className);
 	
 	public abstract List getAllItems();
 	
 	public abstract List getAllUsers();
-	
-	public abstract Object accessAnObjectInt(String className, String variableName,
-			int variable) throws HibernateException;
 
 	// check this one
 	/*public abstract Object accessAnObjectString(String className, String variableName,
@@ -80,11 +75,6 @@ public abstract class HardwareInventoryDAO {
 	
 	public abstract void removeInventoryItem(int aScgNumber);
 
-	public abstract void deleteInventoryItem(InventoryItem anInventoryItem);
-	
 	public abstract void removeUser(String aNameUser);
-	
-	public abstract void deleteUser(User aUser);
-	
 	
 }

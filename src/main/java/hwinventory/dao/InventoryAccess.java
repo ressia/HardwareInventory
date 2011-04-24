@@ -201,7 +201,7 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	 * saveCategory
 	 * @param aCategory
 	 */
-	public void saveCategory(CategoryHardwareDevice aCategory) {
+	private void saveCategory(CategoryHardwareDevice aCategory) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		aCategory.setNameCategory(aCategory.getNameCategory());
@@ -214,12 +214,12 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	 * @param aType
 	 * @param aCategory
 	 */
-	public void saveType(TypeHardwareDevice aType,
+	private void saveType(TypeHardwareDevice aType,
 			CategoryHardwareDevice aCategory) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		CategoryHardwareDevice aCateg = (CategoryHardwareDevice) session.load(CategoryHardwareDevice.class, aCategory.getIdCategory());
-		aCateg.addTypes(aType);
+		aCateg.addType(aType);
 		aType.setNameType(aType.getNameType());
 		aType.setCategory(aType.getCategory());
 		session.save(aType);
@@ -230,7 +230,7 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	 * saveUser
 	 * @param aUser
 	 */
-	public void saveUser(User aUser) {
+	private void saveUser(User aUser) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		aUser.setNameUser(aUser.getNameUser());
@@ -242,7 +242,7 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	 * saveLocation
 	 * @param aLocation
 	 */
-	public void saveLocation(LocationItemInventory aLocation) {
+	private void saveLocation(LocationItemInventory aLocation) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		aLocation.setNameLocation(aLocation.getNameLocation());
@@ -255,7 +255,7 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	 * @param aHardwareDevice
 	 * @param aType
 	 */
-	public void saveHardwareDevice(HardwareDevice aHardwareDevice,
+	private void saveHardwareDevice(HardwareDevice aHardwareDevice,
 			TypeHardwareDevice aType) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
@@ -276,7 +276,7 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	 * saveInventoryItem
 	 * @param anInventoryItem
 	 */
-	public void saveInventoryItem(InventoryItem anInventoryItem) {
+	private void saveInventoryItem(InventoryItem anInventoryItem) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		anInventoryItem.setScgNumber(anInventoryItem.getScgNumber());
@@ -341,7 +341,7 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	 * @return
 	 * @throws HibernateException
 	 */
-	public Object accessAnObjectInt(String className, String variableName,
+	private Object accessAnObjectInt(String className, String variableName,
 			int variable) throws HibernateException {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
@@ -601,7 +601,7 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	 * deleteUser
 	 * @param aUser
 	 */
-	public void deleteUser(User aUser) {
+	private void deleteUser(User aUser) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.delete(aUser);

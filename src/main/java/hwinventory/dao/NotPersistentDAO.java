@@ -7,44 +7,60 @@ import hwinventory.domain.LocationItemInventory;
 import hwinventory.domain.TypeHardwareDevice;
 import hwinventory.domain.User;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 import org.hibernate.HibernateException;
 
 public class NotPersistentDAO extends HardwareInventoryDAO {
 
+	private HashMap categories = new HashMap();
+	private HashMap types = new HashMap();
+	private Collection devices = new ArrayList();
+	private Collection users = new ArrayList();
+	private HashMap locations = new HashMap();
+	private Collection items = new ArrayList();
+	
 	@Override
 	public CategoryHardwareDevice addCategory(String aNameCategory) {
-		// TODO Auto-generated method stub
-		return null;
+		return (CategoryHardwareDevice)categories.put(aNameCategory,new CategoryHardwareDevice(aNameCategory));
 	}
 
 	@Override
-	public TypeHardwareDevice addType(String aNameType,
-			CategoryHardwareDevice aCategory) {
-		// TODO Auto-generated method stub
-		return null;
+	public TypeHardwareDevice addType(String aNameType, CategoryHardwareDevice aCategory) {
+		return aCategory.addType(new TypeHardwareDevice(aCategory,aNameType));
 	}
 
 	@Override
 	public HardwareDevice addHardwareDevice(TypeHardwareDevice aType,
 			String aDiskSize, String aMemorySize, int anIanNumber,
 			String aMacAddress, String aSerialNumber, String anIpAddress) {
-		// TODO Auto-generated method stub
-		return null;
+		HardwareDevice aDevice = new HardwareDevice(aType,
+													aDiskSize, 
+													aMemorySize, 
+													anIanNumber,
+													aMacAddress, 
+													aSerialNumber, 
+													anIpAddress);
+		devices.add(aDevice);
+		return aDevice;
 	}
 
 	@Override
 	public User addUser(String aNameUser) {
-		// TODO Auto-generated method stub
-		return null;
+		User aUser = new User(aNameUser);
+		users.add(aUser);
+		return aUser;
 	}
 
 	@Override
 	public LocationItemInventory addAlocation(String aNameLocation) {
-		// TODO Auto-generated method stub
-		return null;
+		LocationItemInventory aLocation = new LocationItemInventory(aNameLocation);
+		users.add(aLocation);
+		return aLocation;
 	}
 
 	@Override
@@ -53,82 +69,42 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 			LocationItemInventory aLocation, Calendar anInventoryDate,
 			float aPrice, String aBudget, String aGuarantee,
 			Calendar aGuaranteeEnd, String aNote) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void saveCategory(CategoryHardwareDevice aCategory) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void saveType(TypeHardwareDevice aType,
-			CategoryHardwareDevice aCategory) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void saveUser(User aUser) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void saveLocation(LocationItemInventory aLocation) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void saveHardwareDevice(HardwareDevice aHardwareDevice,
-			TypeHardwareDevice aType) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void saveInventoryItem(InventoryItem anInventoryItem) {
-		// TODO Auto-generated method stub
-		
+		InventoryItem anItem = new InventoryItem(aHardwareDevice,
+				 								aScgNumber,  
+				 								aNameItem,  
+				 								aUser,
+				 								aLocation,  
+				 								anInventoryDate,
+				 								aPrice,  
+				 								aBudget,  
+				 								aGuarantee,
+				 								aGuaranteeEnd,
+				 								aNote);
+		items.add(anItem);
 	}
 
 	@Override
 	public List listObject(String className) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList();
 	}
 
 	@Override
 	public List getAllItems() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List)items;
 	}
 
 	@Override
 	public List getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Object accessAnObjectInt(String className, String variableName,
-			int variable) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
+		return (List)users;
 	}
 
 	@Override
 	public Object getAUser(Long anIdUser) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void modifyCategory(String aNameCategory, String aNewNameCategory) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -140,32 +116,34 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 			float aPrice, Calendar anInventoryDate, String aBudget,
 			String aSerialNumber, String aGuarantee, Calendar aGuaranteeEnd,
 			String aNote) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void removeInventoryItem(int aScgNumber) {
-		// TODO Auto-generated method stub
-		
+		InventoryItem itemToRemove = null;
+		for (Object anItem : items) {
+			itemToRemove = (InventoryItem)anItem;
+		    if (itemToRemove.getScgNumber() == aScgNumber) {
+		    	break;
+		    }
+		}
+		items.remove(itemToRemove);
 	}
 
-	@Override
-	public void deleteInventoryItem(InventoryItem anInventoryItem) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void removeUser(String aNameUser) {
-		// TODO Auto-generated method stub
-		
+		User userToRemove = null;
+		for (Object aUser : users) {
+			userToRemove = (User)aUser;
+		    if (userToRemove.getNameUser().equals(aNameUser)) {
+		    	break;
+		    }
+		}
+		users.remove(userToRemove);
 	}
 
-	@Override
-	public void deleteUser(User aUser) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }

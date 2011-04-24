@@ -67,9 +67,10 @@ public class CategoryHardwareDevice implements Serializable {
 		return true;
 	}
 
-	public void addTypes(TypeHardwareDevice aType) {
+	public TypeHardwareDevice addType(TypeHardwareDevice aType) {
 		aType.setCategory(this);
 		types.add(aType);
+		return aType;
 	}
 
 	public void removeTypes(TypeHardwareDevice aType) {
