@@ -34,7 +34,7 @@ public class UserDataView extends DataView{
 			public void onClick() {
 	    		User aUser = (User)item.getModelObject();
 	    		try {
-	    			aDAO.removeUser(aUser.getNameUser()); 	
+	    			aDAO.removeUser(aUser); 	
 		    		UserView aUserView = new UserView(); 
 					setResponsePage(aUserView);
 	    		} catch(Exception e) {

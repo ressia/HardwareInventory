@@ -104,16 +104,16 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 	}
 
 	@Override
-	public void modifyCategory(String aNameCategory, String aNewNameCategory) {
+	public void modifyCategory(CategoryHardwareDevice aCategory) {
 		
 	}
 
 	@Override
-	public void removeInventoryItem(int aScgNumber) {
+	public void removeInventoryItem(InventoryItem anInventoryItem) {
 		InventoryItem itemToRemove = null;
 		for (Object anItem : items) {
 			itemToRemove = (InventoryItem)anItem;
-		    if (itemToRemove.getScgNumber() == aScgNumber) {
+		    if (itemToRemove.getScgNumber() == anInventoryItem.getScgNumber()) {
 		    	break;
 		    }
 		}
@@ -122,11 +122,11 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 
 
 	@Override
-	public void removeUser(String aNameUser) {
+	public void removeUser(User aUser) {
 		User userToRemove = null;
-		for (Object aUser : users) {
-			userToRemove = (User)aUser;
-		    if (userToRemove.getNameUser().equals(aNameUser)) {
+		for (Object aUserObject : users) {
+			userToRemove = (User)aUserObject;
+		    if (userToRemove.getNameUser().equals(aUser.getNameUser())) {
 		    	break;
 		    }
 		}
@@ -134,17 +134,11 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 	}
 
 	@Override
-	public void modifyUser(String aNameUser, String aNewNameUser) {	
+	public void modifyUser(User aUser) {	
 	}
 
 	@Override
-	public void modifyInventoryItem(int aScgNumber, int anIanNumber,
-			String aNameCategory, String aNameItem, String anIpAddress,
-			String aMacAddress, String aNameType, String aDiskSize,
-			String aMemorySize, String aNameLocation, String aNameUser,
-			float aPrice, Calendar anInventoryDate, String aBudget,
-			String aSerialNumber, String aGuarantee, Calendar aGuaranteeEnd,
-			String aNote) {		
+	public void modifyInventoryItem(InventoryItem anInventoryItem) {		
 	}
 
 

@@ -63,20 +63,13 @@ public abstract class HardwareInventoryDAO {
 	*/
 	public abstract Object getAUser(Long anIdUser);
 
-	public abstract void modifyCategory(String aNameCategory, String aNewNameCategory);
+	public abstract void modifyCategory(CategoryHardwareDevice aCategory);
 	
-	public abstract void modifyUser(String aNameUser, String aNewNameUser);
+	public abstract void modifyUser(User aUser);
 	
-	public abstract void modifyInventoryItem(int aScgNumber, int anIanNumber,
-			String aNameCategory, String aNameItem, String anIpAddress,
-			String aMacAddress, String aNameType, String aDiskSize,
-			String aMemorySize, String aNameLocation, String aNameUser,
-			float aPrice, Calendar anInventoryDate, String aBudget,
-			String aSerialNumber, String aGuarantee, Calendar aGuaranteeEnd,
-			String aNote);
+	public abstract void modifyInventoryItem(InventoryItem anInventoryItem);
 	
-	public abstract void removeInventoryItem(int aScgNumber);
+	public abstract void removeInventoryItem(InventoryItem anInventoryItem);
 
-	public abstract void removeUser(String aNameUser);
-	
+	public abstract void removeUser(User aUser);	
 }

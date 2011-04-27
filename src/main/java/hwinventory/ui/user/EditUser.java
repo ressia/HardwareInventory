@@ -21,13 +21,13 @@ public final class EditUser extends SecureWebPage
         add(new EditUserForm("editUserForm", aUser));
     }
 
-      static public final class EditUserForm extends Form<User>
+      static public final class EditUserForm extends Form
     {
         public EditUserForm(final String id, final User aUser)
         {
-            super(id, new CompoundPropertyModel<User>(aUser));
+            super(id, new CompoundPropertyModel(aUser));
 
-            final TextField<String> nameUser = new TextField<String>("nameUser");
+            final TextField nameUser = new TextField("nameUser");
             nameUser.setRequired(true);
             final FormComponentFeedbackBorder nameFeedback = new FormComponentFeedbackBorder("nameFeedback");
             add(nameFeedback);
@@ -39,7 +39,7 @@ public final class EditUser extends SecureWebPage
         {
             User aUserModel = (User)getModelObject();
     		HardwareInventoryDAO aDAO = ((HardwareInventoryApplication)getApplication()).getSystem().getHardwareInventoryDAO();
-    		aDAO.modifyUser(aUserModel.getNameUser(), nameUser);
+    		aDAO.modifyUser(aUserModel);
     		UserView aUserView = new UserView();
     		setResponsePage(aUserView);
         }

@@ -465,142 +465,45 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	}
 	
 	/**
-	 * modifyCategory	
-	 * @param aNameCategory
-	 * @param aNewNameCategory
-	 */
-	public void modifyCategory(String aNameCategory, String aNewNameCategory) {
-		CategoryHardwareDevice aCategory = getACategory(aNameCategory);
-		if (aCategory != null) {
-			updateCategory(aCategory, aNewNameCategory);
-		}
-	}
-	
-	/**
-	 * uodateCategory
+	 * modifyCategory
 	 * @param aCategory
 	 * @param aNewNameCategory
 	 */
-	private void updateCategory(CategoryHardwareDevice aCategory, String aNewNameCategory) {
+	public void modifyCategory(CategoryHardwareDevice aCategory) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		aCategory.setNameCategory(aNewNameCategory);
 		session.update(aCategory);
 		session.getTransaction().commit();	
 	}
 	
 	/**
 	 * modifyUser
-	 * @param aNameUser
-	 * @param aNewNameUser
-	 */
-	public void modifyUser(User aUser) {
-		updateUser(aUser);
-	}
-	
-	/**
-	 * updateUser
 	 * @param aUser
 	 * @param aNewNameUser
 	 */
-	private void updateUser(User aUser) {
+	public void modifyUser(User aUser) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.update(aUser);
 		session.getTransaction().commit();	
 	}
-	
+		
 	/**
 	 * modifyInventoryItem
-	 * @param aScgNumber
-	 * @param anIanNumber
-	 * @param aNameCategory
-	 * @param aNameItem
-	 * @param anIpAddress
-	 * @param aMacAddress
-	 * @param aNameType
-	 * @param aDiskSize
-	 * @param aMemorySize
-	 * @param aNameLocation
-	 * @param aNameUser
-	 * @param aPrice
-	 * @param anInventoryDate
-	 * @param aBudget
-	 * @param aSerialNumber
-	 * @param aGuarantee
-	 * @param aGuaranteeEnd
-	 * @param aNote
-	 */
-	public void modifyInventoryItem(int aScgNumber, int anIanNumber,
-			String aNameCategory, String aNameItem, String anIpAddress,
-			String aMacAddress, String aNameType, String aDiskSize,
-			String aMemorySize, String aNameLocation, String aNameUser,
-			float aPrice, Calendar anInventoryDate, String aBudget,
-			String aSerialNumber, String aGuarantee, Calendar aGuaranteeEnd,
-			String aNote) {
-		InventoryItem anInventoryItem = getAnInventoryItem(aScgNumber);
-		if (anInventoryItem != null) {
-			User aUser = getAUser(aNameUser);
-			LocationItemInventory aLocation = getAlocation(aNameLocation);
-			TypeHardwareDevice aType = getAType(aNameType);
-			HardwareDevice aHarwareDevice = getAHardwareDevice(aType, anIanNumber, anIpAddress, aSerialNumber);
-			updateInventoryItem(anInventoryItem, aUser, aLocation, aHarwareDevice, aNameItem
-					,aPrice, anInventoryDate, aBudget, aGuarantee, aGuaranteeEnd
-					,aNote);
-		}
-	}
-	
-	/**
-	 * updateInventoryItem
 	 * @param anInventoryItem
-	 * @param aUser
-	 * @param aLocation
-	 * @param aHarwareDevice
-	 * @param aNameItem
-	 * @param aPrice
-	 * @param anInventoryDate
-	 * @param aBudget
-	 * @param aGuarantee
-	 * @param aGuaranteeEnd
-	 * @param aNote
 	 */
-	private void updateInventoryItem(InventoryItem anInventoryItem,
-			User aUser, LocationItemInventory aLocation,
-			HardwareDevice aHarwareDevice, String aNameItem, float aPrice,
-			Calendar anInventoryDate, String aBudget, String aGuarantee,
-			Calendar aGuaranteeEnd, String aNote) {
+	public void modifyInventoryItem(InventoryItem anInventoryItem) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();	
-		anInventoryItem.setBudget(aBudget);
-		anInventoryItem.setGuarantee(aGuarantee);
-		anInventoryItem.setGuaranteeEnd(aGuaranteeEnd);
-		anInventoryItem.setHardwareDevice(aHarwareDevice);
-		anInventoryItem.setInventoryDate(anInventoryDate);
-		anInventoryItem.setLocation(aLocation);
-		anInventoryItem.setNameItem(aNameItem);
-		anInventoryItem.setNote(aNote);
-		anInventoryItem.setPrice(aPrice);
-		anInventoryItem.setUser(aUser);
 		session.update(anInventoryItem);
 		session.getTransaction().commit();	
 	}
 
 	/**
-	 * removeInventoryItem
-	 * @param aScgNumber
-	 */
-	public void removeInventoryItem(int aScgNumber) {
-		InventoryItem anInventoryItem = getAnInventoryItem(aScgNumber);
-		if (anInventoryItem != null) {
-			deleteInventoryItem(anInventoryItem);
-		}
-	}
-	
-	/**
 	 * deleteInventoryItem
 	 * @param anInventoryItem
 	 */
-	public void deleteInventoryItem(InventoryItem anInventoryItem) {
+	public void removeInventoryItem(InventoryItem anInventoryItem) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.delete(anInventoryItem);
@@ -609,20 +512,9 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	
 	/**
 	 * removeUser
-	 * @param aNameUser
-	 */
-	public void removeUser(String aNameUser) {
-		User aUser = getAUser(aNameUser);
-		if (aUser != null) {
-			deleteUser(aUser);
-		}
-	}
-	
-	/**
-	 * deleteUser
 	 * @param aUser
 	 */
-	private void deleteUser(User aUser) {
+	public void removeUser(User aUser) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.delete(aUser);
