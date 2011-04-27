@@ -51,7 +51,7 @@ public class InventoryMain {
 		/**
 		anInventoryAccess.modifyCategory(aNameCategory, aNewNameCategory);
 		
-		anInventoryAccess.modidyInventoryItem(aScgNumber, anIanNumber, aNameCategory,
+		anInventoryAccess.modifyInventoryItem(aScgNumber, anIanNumber, aNameCategory,
 				aNameItem, anIpAddress, aMacAddress, aNameType, aDiskSize,
 				aMemorySize, aNameLocation, aNameUser, aPrice, anInventoryDate,
 				aBudget, aSerialNumber, aGuarantee, aGuaranteeEnd, aNote);

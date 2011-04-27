@@ -13,7 +13,7 @@ public class AddUserPage extends SecureWebPage {
     public AddUserPage() {
     	UserDraft aUserDraft = new UserDraft();
     	CompoundPropertyModel aUserDraftModel = new CompoundPropertyModel(aUserDraft);
-    	Form form = new AddUserForm("form",aUserDraftModel);
+    	Form form = new AddUserForm("form", aUserDraftModel);
     	add(form);
     	TextField userName = new TextField("name");
     	form.add(userName);
@@ -21,8 +21,8 @@ public class AddUserPage extends SecureWebPage {
     
     class AddUserForm extends Form {
     	// PropertyModel is an IModel implementation 
-    	public AddUserForm (String id,IModel model) {
-    		super(id,model);
+    	public AddUserForm (String id, IModel model) { 
+    		super(id, model);
     	}
     	
     	@Override 

@@ -490,6 +490,31 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	}
 	
 	/**
+	 * modifyUser
+	 * @param aNameUser
+	 * @param aNewNameUser
+	 */
+	public void modifyUser(String aNameUser, String aNewNameUser) {
+		User aUser = getAUser(aNameUser);
+		if (aUser != null) {
+			updateUser(aUser, aNewNameUser);
+		}
+	}
+	
+	/**
+	 * updateUser
+	 * @param aUser
+	 * @param aNewNameUser
+	 */
+	private void updateUser(User aUser, String aNewNameUser) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		aUser.setNameUser(aNewNameUser);
+		session.update(aUser);
+		session.getTransaction().commit();	
+	}
+	
+	/**
 	 * modifyInventoryItem
 	 * @param aScgNumber
 	 * @param anIanNumber
@@ -510,7 +535,7 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	 * @param aGuaranteeEnd
 	 * @param aNote
 	 */
-	public void modidyInventoryItem(int aScgNumber, int anIanNumber,
+	public void modifyInventoryItem(int aScgNumber, int anIanNumber,
 			String aNameCategory, String aNameItem, String anIpAddress,
 			String aMacAddress, String aNameType, String aDiskSize,
 			String aMemorySize, String aNameLocation, String aNameUser,

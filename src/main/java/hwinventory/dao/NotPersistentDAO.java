@@ -109,17 +109,6 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 	}
 
 	@Override
-	public void modidyInventoryItem(int aScgNumber, int anIanNumber,
-			String aNameCategory, String aNameItem, String anIpAddress,
-			String aMacAddress, String aNameType, String aDiskSize,
-			String aMemorySize, String aNameLocation, String aNameUser,
-			float aPrice, Calendar anInventoryDate, String aBudget,
-			String aSerialNumber, String aGuarantee, Calendar aGuaranteeEnd,
-			String aNote) {
-		
-	}
-
-	@Override
 	public void removeInventoryItem(int aScgNumber) {
 		InventoryItem itemToRemove = null;
 		for (Object anItem : items) {
@@ -142,6 +131,20 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 		    }
 		}
 		users.remove(userToRemove);
+	}
+
+	@Override
+	public void modifyUser(String aNameUser, String aNewNameUser) {	
+	}
+
+	@Override
+	public void modifyInventoryItem(int aScgNumber, int anIanNumber,
+			String aNameCategory, String aNameItem, String anIpAddress,
+			String aMacAddress, String aNameType, String aDiskSize,
+			String aMemorySize, String aNameLocation, String aNameUser,
+			float aPrice, Calendar anInventoryDate, String aBudget,
+			String aSerialNumber, String aGuarantee, Calendar aGuaranteeEnd,
+			String aNote) {		
 	}
 
 

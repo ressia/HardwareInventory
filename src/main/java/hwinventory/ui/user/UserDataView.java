@@ -46,6 +46,9 @@ public class UserDataView extends DataView{
 		});
 		item.add(new Link("linkToEdit") {
 			public void onClick() {
+				User aUser = (User) item.getModelObject();
+				EditUser anEditUser = new EditUser(aUser);
+				setResponsePage(anEditUser);
 			}
 		});
 	}

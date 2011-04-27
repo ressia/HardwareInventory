@@ -15,7 +15,6 @@ public class InventoryItemView extends SecureWebPage {
 	public InventoryItemView() {
 		final Form form = new Form("itemForm"); 
 		final InventoryItemDataProvider dataProvider = new InventoryItemDataProvider();
-
 		final DataView items = new InventoryItemDataView("items", dataProvider); 
 		form.add(items); 
 		form.add(new Button("addNewItem") {

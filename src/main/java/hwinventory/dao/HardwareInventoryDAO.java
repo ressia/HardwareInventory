@@ -65,7 +65,9 @@ public abstract class HardwareInventoryDAO {
 
 	public abstract void modifyCategory(String aNameCategory, String aNewNameCategory);
 	
-	public abstract void modidyInventoryItem(int aScgNumber, int anIanNumber,
+	public abstract void modifyUser(String aNameUser, String aNewNameUser);
+	
+	public abstract void modifyInventoryItem(int aScgNumber, int anIanNumber,
 			String aNameCategory, String aNameItem, String anIpAddress,
 			String aMacAddress, String aNameType, String aDiskSize,
 			String aMemorySize, String aNameLocation, String aNameUser,
