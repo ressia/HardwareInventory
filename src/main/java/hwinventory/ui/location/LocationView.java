@@ -1,4 +1,4 @@
-package hwinventory.ui.user;
+package hwinventory.ui.location;
 
 import hwinventory.ui.inventoryItem.InventoryItemView;
 import hwinventory.ui.webpage.SecureWebPage;
@@ -9,19 +9,19 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.repeater.data.DataView;
 
 
-public class UserView extends SecureWebPage {
+public class LocationView extends SecureWebPage {
 	
-	public UserView() {
+	public LocationView() {
 		FeedbackPanel feedback = new FeedbackPanel("feedback");
 		add(feedback);
-		Form form = new Form("userForm");
-		UserDataProvider aUserDataProvider = new UserDataProvider();
-		final DataView users = new UserDataView("users", aUserDataProvider);
-		form.add(users);
-		form.add(new Button("addUser") {
+		Form form = new Form("locationForm");
+		LocationDataProvider aLocationDataProvider = new LocationDataProvider();
+		final DataView locations = new LocationDataView("locations", aLocationDataProvider);
+		form.add(locations);
+		form.add(new Button("addLocation") {
 			public void onSubmit() {
-				AddUser anAddUserPage = new AddUser();
-				setResponsePage(anAddUserPage);
+				AddLocation anAddLocation = new AddLocation();
+				setResponsePage(anAddLocation);
 			}
 		});
 		form.add(new Button("backItem") {

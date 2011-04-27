@@ -8,9 +8,9 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 
-public class AddUserPage extends SecureWebPage {
+public class AddUser extends SecureWebPage {
 	
-    public AddUserPage() {
+    public AddUser() {
     	UserDraft aUserDraft = new UserDraft();
     	CompoundPropertyModel aUserDraftModel = new CompoundPropertyModel(aUserDraft);
     	Form form = new AddUserForm("form", aUserDraftModel);
@@ -30,8 +30,8 @@ public class AddUserPage extends SecureWebPage {
     		UserDraft aUserDraftModel = (UserDraft)getModelObject();
     		HardwareInventoryDAO aDAO = ((HardwareInventoryApplication)getApplication()).getSystem().getHardwareInventoryDAO();
     		aDAO.addUser(aUserDraftModel.getName());
-    		MessagePage messagePage = new MessagePage();
-    		setResponsePage(messagePage);
+    		UserView aUserView = new UserView();
+    		setResponsePage(aUserView);
     	}
 	}
     

@@ -42,7 +42,7 @@ public class InventoryMain {
 		
 		User anUser = anInventoryAccess.addUser(aNameUser);
 		
-		LocationItemInventory aLocation = anInventoryAccess.addAlocation(aNameLocation);
+		LocationItemInventory aLocation = anInventoryAccess.addLocation(aNameLocation);
 		
 		anInventoryAccess.addInventoryItem(aHardwareDevice, aScgNumber, aNameItem, anUser,
 				aLocation, anInventoryDate, aPrice, aBudget, aGuarantee,

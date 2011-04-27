@@ -90,7 +90,7 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	 * @param aNameLocation
 	 * @return
 	 */
-	public LocationItemInventory addAlocation(String aNameLocation) {
+	public LocationItemInventory addLocation(String aNameLocation) {
 		LocationItemInventory aLocation = getAlocation(aNameLocation);
 		if (aLocation == null) {
 			aLocation = new LocationItemInventory(aNameLocation);
@@ -334,6 +334,23 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	}
 	
 	/**
+	 * getAllCategories
+	 * @return
+	 */
+	public List getAllCategories() {
+		return listObject("CategoryHardwareDevice");
+	}
+	
+	/**
+	 * getAllLocations
+	 * @return
+	 */
+	public List getAllLocations() {
+		return listObject("LocationItemInventory");
+	}
+
+	
+	/**
 	 * accessAnObjectInt
 	 * @param className
 	 * @param variableName
@@ -487,6 +504,17 @@ public class InventoryAccess extends HardwareInventoryDAO {
 		session.update(aUser);
 		session.getTransaction().commit();	
 	}
+	
+	/**
+	 * modifyLocation
+	 * @param aLocation
+	 */
+	public void modifyLocation(LocationItemInventory aLocation) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		session.update(aLocation);
+		session.getTransaction().commit();	
+	}
 		
 	/**
 	 * modifyInventoryItem
@@ -500,7 +528,7 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	}
 
 	/**
-	 * deleteInventoryItem
+	 * removeInventoryItem
 	 * @param anInventoryItem
 	 */
 	public void removeInventoryItem(InventoryItem anInventoryItem) {
@@ -520,4 +548,27 @@ public class InventoryAccess extends HardwareInventoryDAO {
 		session.delete(aUser);
 		session.getTransaction().commit();	
 	}
+	
+	/**
+	 * removeCategory
+	 * @param aCategory
+	 */
+	public void removeCategory(CategoryHardwareDevice aCategory) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		session.delete(aCategory);
+		session.getTransaction().commit();	
+	}
+	
+	/**
+	 * removeLocation
+	 * @param aLocation
+	 */
+	public void removeLocation(LocationItemInventory aLocation) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		session.delete(aLocation);
+		session.getTransaction().commit();	
+	}
+
 }

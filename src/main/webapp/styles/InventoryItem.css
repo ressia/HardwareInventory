@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 .body {
-	background-color:#b0c4de;
+	background-color:white;
 }
 .form {
 }
@@ -12,22 +12,22 @@
 	width:300px;
 }
 .borderedTittleTable {
-	background: #DEDEDE;
-	color: gray;
+	background: #FF5000;
+	color: black;
 	font-weight: bold;
 	font-family: Verdana;
-	border: solid #014A07;
+	border: solid #F01A00;
 	border-width: thin;
 	padding: 2px 2px 2px 6px;
 	margin: 2px;
 	font-size:12px;
 }
 .borderedTable {
-	background: #DEDEDE;
-	color: gray;
+	background: #FFC998;
+	color: black;
 	font-weight: bold;
 	font-family: Verdana;
-	border: solid #F48606;
+	border: solid #F01A00;
 	border-width: thin;
 	padding: 2px 2px 2px 6px;
 	margin: 2px;
@@ -48,4 +48,16 @@
 	left:90px;
 	top: 130px;
 	width:70px;
+}
+.buttonGoCategory {
+	position:relative;
+	left:130px;
+	top: 130px;
+	width:100px;
+}
+.buttonGoLocation {
+	position:relative;
+	left:170px;
+	top: 130px;
+	width:100px;
 }

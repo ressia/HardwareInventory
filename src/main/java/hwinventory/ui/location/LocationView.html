@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head><title>Browse Locations</title></head>
+	<body>
+		<span wicket:id = "feedback"> Feedback messages will be here</span>
+		<form name="ViewLocationForm" wicket:id="locationForm">
+			<table cellspacing="0" class="dataview" border="1">
+				<tr>
+					<th align="center">Location</th>
+				</tr>
+				<tr wicket:id="locations">
+					<td><span wicket:id="nameLocation">[nameLocation]</span></td>
+					<td><a href="#" wicket:id="linkToDelete">Delete</a></td>
+					<td><a href="#" wicket:id="linkToEdit">Edit</a></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Add a location" wicket:id="addLocation"/></td>
+					<td><input type="submit" value="Back" wicket:id="backItem"/></td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

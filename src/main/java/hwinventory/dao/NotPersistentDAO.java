@@ -26,7 +26,9 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 	
 	@Override
 	public CategoryHardwareDevice addCategory(String aNameCategory) {
-		return (CategoryHardwareDevice)categories.put(aNameCategory,new CategoryHardwareDevice(aNameCategory));
+		CategoryHardwareDevice aCategory = new CategoryHardwareDevice(aNameCategory);
+		categories.put(aNameCategory, aCategory);
+		return aCategory;
 	}
 
 	@Override
@@ -57,7 +59,7 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 	}
 
 	@Override
-	public LocationItemInventory addAlocation(String aNameLocation) {
+	public LocationItemInventory addLocation(String aNameLocation) {
 		LocationItemInventory aLocation = new LocationItemInventory(aNameLocation);
 		users.add(aLocation);
 		return aLocation;
@@ -97,6 +99,17 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 	public List getAllUsers() {
 		return (List)users;
 	}
+	
+	@Override
+	public List getAllCategories() {
+		return (List)categories;
+	}
+	
+	@Override
+	public List getAllLocations() {
+		return (List)locations;
+	}
+
 
 	@Override
 	public Object getAUser(Long anIdUser) {
@@ -132,15 +145,24 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 		}
 		users.remove(userToRemove);
 	}
+	
+	@Override
+	public void removeCategory(CategoryHardwareDevice aCategory) {
+	}
+
+	@Override
+	public void removeLocation(LocationItemInventory aLocation) {
+	}
 
 	@Override
 	public void modifyUser(User aUser) {	
+	}
+	
+	@Override
+	public void modifyLocation(LocationItemInventory aLocation) {		
 	}
 
 	@Override
 	public void modifyInventoryItem(InventoryItem anInventoryItem) {		
 	}
-
-
-
 }

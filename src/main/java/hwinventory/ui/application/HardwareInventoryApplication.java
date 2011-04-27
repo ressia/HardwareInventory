@@ -6,7 +6,7 @@ import hwinventory.system.HardwareInventorySystem;
 import hwinventory.ui.inventoryItem.InventoryItemView;
 import hwinventory.ui.login.Login;
 import hwinventory.ui.session.HardwareInventorySession;
-import hwinventory.ui.user.AddUserPage;
+import hwinventory.ui.user.AddUser;
 import hwinventory.ui.user.UserView;
 
 import org.apache.wicket.Request;
@@ -29,7 +29,7 @@ public class HardwareInventoryApplication extends WebApplication {
 		mountBookmarkablePage("/login", Login.class); 
 		mountBookmarkablePage("/inventoryItem", InventoryItemView.class);
 		mountBookmarkablePage("/userView", UserView.class);
-		mountBookmarkablePage("/addUser", AddUserPage.class);
+		mountBookmarkablePage("/addUser", AddUser.class);
 	}
 	
 	public Session newSession(Request request, Response response) {

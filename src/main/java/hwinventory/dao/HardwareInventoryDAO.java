@@ -1,6 +1,5 @@
 package hwinventory.dao;
 
-import hwinventory.db.HibernateUtil;
 import hwinventory.domain.CategoryHardwareDevice;
 import hwinventory.domain.HardwareDevice;
 import hwinventory.domain.InventoryItem;
@@ -11,12 +10,7 @@ import hwinventory.domain.User;
 import java.util.Calendar;
 import java.util.List;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-
 public abstract class HardwareInventoryDAO {
-
-	public abstract CategoryHardwareDevice addCategory(String aNameCategory);
 	
 	public abstract TypeHardwareDevice addType(String aNameType, CategoryHardwareDevice aCategory);
 
@@ -25,8 +19,10 @@ public abstract class HardwareInventoryDAO {
 			String aMacAddress, String aSerialNumber, String anIpAddress);
 
 	public abstract User addUser(String aNameUser);
+	
+	public abstract CategoryHardwareDevice addCategory(String aNameCategory);
 
-	public abstract LocationItemInventory addAlocation(String aNameLocation);
+	public abstract LocationItemInventory addLocation(String aNameLocation);
 
 	public abstract void addInventoryItem(HardwareDevice aHardwareDevice,
 			int aScgNumber, String aNameItem, User aUser,
@@ -53,6 +49,10 @@ public abstract class HardwareInventoryDAO {
 	public abstract List getAllItems();
 	
 	public abstract List getAllUsers();
+	
+	public abstract List getAllCategories();
+	
+	public abstract List getAllLocations();
 
 	// check this one
 	/*public abstract Object accessAnObjectString(String className, String variableName,
@@ -67,9 +67,15 @@ public abstract class HardwareInventoryDAO {
 	
 	public abstract void modifyUser(User aUser);
 	
+	public abstract void modifyLocation(LocationItemInventory aLocation);
+	
 	public abstract void modifyInventoryItem(InventoryItem anInventoryItem);
 	
 	public abstract void removeInventoryItem(InventoryItem anInventoryItem);
 
 	public abstract void removeUser(User aUser);	
+	
+	public abstract void removeCategory(CategoryHardwareDevice aCategory);
+	
+	public abstract void removeLocation(LocationItemInventory aLocation);
 }

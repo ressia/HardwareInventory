@@ -1,6 +1,8 @@
 package hwinventory.ui.inventoryItem;
 
 
+import hwinventory.ui.category.CategoryView;
+import hwinventory.ui.location.LocationView;
 import hwinventory.ui.user.UserView;
 import hwinventory.ui.webpage.SecureWebPage;
 
@@ -28,6 +30,18 @@ public class InventoryItemView extends SecureWebPage {
 				setResponsePage(aUserView);
 			}
 		});
+		form.add(new Button("goCategory") {
+			public void onSubmit() {
+				CategoryView aCategoryView = new CategoryView();
+				setResponsePage(aCategoryView);
+			}
+		});
+		form.add(new Button("goLocation") {
+			public void onSubmit() {
+				LocationView aLocationView = new LocationView();
+				setResponsePage(aLocationView);
+			}
+		});	
 		add(form);
 	}
 }	
