@@ -494,11 +494,8 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	 * @param aNameUser
 	 * @param aNewNameUser
 	 */
-	public void modifyUser(String aNameUser, String aNewNameUser) {
-		User aUser = getAUser(aNameUser);
-		if (aUser != null) {
-			updateUser(aUser, aNewNameUser);
-		}
+	public void modifyUser(User aUser) {
+		updateUser(aUser);
 	}
 	
 	/**
@@ -506,10 +503,9 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	 * @param aUser
 	 * @param aNewNameUser
 	 */
-	private void updateUser(User aUser, String aNewNameUser) {
+	private void updateUser(User aUser) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
-		aUser.setNameUser(aNewNameUser);
 		session.update(aUser);
 		session.getTransaction().commit();	
 	}
