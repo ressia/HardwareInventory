@@ -110,6 +110,11 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 		return (List)locations;
 	}
 
+	@Override
+	public List getAllTypes() {
+		return (List)types;
+	}
+
 
 	@Override
 	public Object getAUser(Long anIdUser) {
@@ -153,6 +158,10 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 	@Override
 	public void removeLocation(LocationItemInventory aLocation) {
 	}
+	
+	@Override
+	public void removeType(TypeHardwareDevice aType) {
+	}
 
 	@Override
 	public void modifyUser(User aUser) {	
@@ -164,5 +173,9 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 
 	@Override
 	public void modifyInventoryItem(InventoryItem anInventoryItem) {		
+	}
+
+	@Override
+	public void modifyType(TypeHardwareDevice aType) {
 	}
 }

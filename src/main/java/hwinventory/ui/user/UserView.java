@@ -20,8 +20,8 @@ public class UserView extends SecureWebPage {
 		form.add(users);
 		form.add(new Button("addUser") {
 			public void onSubmit() {
-				AddUser anAddUserPage = new AddUser();
-				setResponsePage(anAddUserPage);
+				AddUser anAddUser = new AddUser();
+				setResponsePage(anAddUser);
 			}
 		});
 		form.add(new Button("backItem") {

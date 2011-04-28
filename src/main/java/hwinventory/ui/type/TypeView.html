@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>Browse Item</title>
+	</head> 
+	<body>
+		<h2>Types Hardware Device</h2>
+		<span wicket:id = "feedback"> Feedback messages will be here</span>
+		<form name="viewTypeForm" wicket:id="typeForm">
+			<table cellspacing="0" class="dataview" border="1">
+				<tr>
+					<th align="center">Type Hardware</th>
+					<th align="center">Category</th>					
+				</tr>
+				<tr wicket:id="types">
+					<td><span wicket:id="nameType">[nameType]</span></td>
+					<td><span wicket:id="category.nameCategory">[nameCategory]</span></td>
+					<td><a href="#" wicket:id="linkToDelete">Delete</a></td>
+					<td><a href="#" wicket:id="linkToEdit">Edit</a></td>
+				</tr> 
+			</table> 
+			<tr>
+				<td><input type="submit" value="Add new type" wicket:id="addNewType"/></td>
+				<td><input type="submit" value="Back" wicket:id="backItem"/></td>
+			</tr>
+		</form>
+	</body> 
+</html>

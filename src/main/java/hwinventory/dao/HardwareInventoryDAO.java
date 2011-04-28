@@ -53,6 +53,9 @@ public abstract class HardwareInventoryDAO {
 	public abstract List getAllCategories();
 	
 	public abstract List getAllLocations();
+	
+	public abstract List getAllTypes();
+
 
 	// check this one
 	/*public abstract Object accessAnObjectString(String className, String variableName,
@@ -69,6 +72,8 @@ public abstract class HardwareInventoryDAO {
 	
 	public abstract void modifyLocation(LocationItemInventory aLocation);
 	
+	public abstract void modifyType(TypeHardwareDevice aType);
+	
 	public abstract void modifyInventoryItem(InventoryItem anInventoryItem);
 	
 	public abstract void removeInventoryItem(InventoryItem anInventoryItem);
@@ -78,4 +83,6 @@ public abstract class HardwareInventoryDAO {
 	public abstract void removeCategory(CategoryHardwareDevice aCategory);
 	
 	public abstract void removeLocation(LocationItemInventory aLocation);
+
+	public abstract void removeType(TypeHardwareDevice aType);
 }

@@ -27,6 +27,9 @@ public final class EditUser extends SecureWebPage
         {
             super(id, new CompoundPropertyModel(aUser));
 
+            /**
+             * edited values
+             */
             final TextField nameUser = new TextField("nameUser");
             nameUser.setRequired(true);
             final FormComponentFeedbackBorder nameFeedback = new FormComponentFeedbackBorder("nameFeedback");

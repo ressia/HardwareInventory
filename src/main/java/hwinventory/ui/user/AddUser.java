@@ -16,6 +16,7 @@ public class AddUser extends SecureWebPage {
     	Form form = new AddUserForm("form", aUserDraftModel);
     	add(form);
     	TextField userName = new TextField("name");
+    	userName.setRequired(true);
     	form.add(userName);
     }
     

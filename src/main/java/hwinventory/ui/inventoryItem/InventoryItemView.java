@@ -1,8 +1,10 @@
 package hwinventory.ui.inventoryItem;
 
 
+import hwinventory.domain.TypeHardwareDevice;
 import hwinventory.ui.category.CategoryView;
 import hwinventory.ui.location.LocationView;
+import hwinventory.ui.type.TypeView;
 import hwinventory.ui.user.UserView;
 import hwinventory.ui.webpage.SecureWebPage;
 
@@ -40,6 +42,12 @@ public class InventoryItemView extends SecureWebPage {
 			public void onSubmit() {
 				LocationView aLocationView = new LocationView();
 				setResponsePage(aLocationView);
+			}
+		});	
+		form.add(new Button("goType") {
+			public void onSubmit() {
+				TypeView aTypeView = new TypeView();
+				setResponsePage(aTypeView);
 			}
 		});	
 		add(form);

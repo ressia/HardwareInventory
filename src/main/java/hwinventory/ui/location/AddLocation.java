@@ -15,8 +15,9 @@ public class AddLocation extends SecureWebPage {
     	CompoundPropertyModel aLocationDraftModel = new CompoundPropertyModel(aLocationDraft);
     	Form form = new AddLocationForm("form", aLocationDraftModel);
     	add(form);
-    	TextField LocationName = new TextField("name");
-    	form.add(LocationName);
+    	TextField locationName = new TextField("name");
+    	locationName.setRequired(true);
+    	form.add(locationName);
     }
     
     class AddLocationForm extends Form {

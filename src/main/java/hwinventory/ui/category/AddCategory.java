@@ -16,6 +16,7 @@ public class AddCategory extends SecureWebPage {
     	Form form = new AddCategoryForm("form", aCategoryDraftModel);
     	add(form);
     	TextField categoryName = new TextField("name");
+    	categoryName.setRequired(true);
     	form.add(categoryName);
     }
     
