@@ -65,5 +65,11 @@
 	position:relative;
 	left:210px;
 	top: 130px;
-	width:100px;
+	width:120px;
+}
+.buttonGoHardware {
+	position:relative;
+	left:250px;
+	top: 130px;
+	width:120px;
 }

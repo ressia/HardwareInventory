@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>Browse Item</title>
+	</head> 
+	<body>
+		<h2>Hardware Device</h2>
+		<span wicket:id = "feedback"> Feedback messages will be here</span>
+		<form name="ViewHardwareForm" wicket:id="hardwareForm">
+			<table cellspacing="0" class="dataview" border="1">
+				<tr>
+					<th align="center">Type Hardware</th>
+					<th align="center">Disk Size</th>	
+					<th align="center">Memory</th>
+					<th align="center">Iam Number</th>
+					<th align="center">Mac Address</th>	
+					<th align="center">Serial Number</th>	
+					<th align="center">IP Address</th>					
+				</tr>
+				<tr wicket:id="devices">
+					<td><span wicket:id="type.nameType">[nameType]</span></td>
+					<td><span wicket:id="diskSize">[diskSize]</span></td>
+					<td><span wicket:id="memorySize">[memorySize]</span></td>
+					<td><span wicket:id="ianNumber">[ianNumber]</span></td>
+					<td><span wicket:id="macAddress">[macAddress]</span></td>
+					<td><span wicket:id="serialNumber">[serialNumber]</span></td>
+					<td><span wicket:id="ipAddress">[ipAddress]</span></td>					
+					<td><a href="#" wicket:id="linkToDelete">Delete</a></td>
+					<td><a href="#" wicket:id="linkToEdit">Edit</a></td>
+				</tr> 
+			</table> 
+			<tr>
+				<td><input type="submit" value="Add new hardware" wicket:id="addNewHardware"/></td>
+				<td><input type="submit" value="Back" wicket:id="backItem"/></td>
+			</tr>
+		</form>
+	</body> 
+</html>

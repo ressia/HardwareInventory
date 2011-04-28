@@ -1,0 +1,48 @@
+<html xmlns:wicket="http://wicket.apache.org/">
+<head>
+    <title>Edit Hardware Device</title>
+</head>
+<body>
+	<h2>Edit Hardware Device</h2>
+  	<span wicket:id = "feedback"></span>
+  	<p>
+  	<form wicket:id = "editHardwareForm">        
+   	 <table cellpadding="3">  
+      <tr>
+        <td align="left">Hardware Device:</td>
+ 	    <td wicket:id = "typeFeedback">
+   			Type name <select wicket:id="type"/><br/>
+        </td>
+        <td wicket:id = "diskFeedback">
+          <input wicket:id = "diskSize" type="text"/>
+        </td>
+        <td wicket:id = "memoryFeedback">
+          <input wicket:id = "memorySize" type="text"/>
+        </td>
+        <td wicket:id = "iamFeedback">
+          <input wicket:id = "ianNumber" type="text"/>
+        </td>
+        <td wicket:id = "macFeedback">
+          <input wicket:id = "macAddress" type="text"/>
+        </td>
+        <td wicket:id = "serialFeedback">
+          <input wicket:id = "serialNumber" type="text"/>
+        </td>
+        <td wicket:id = "ipFeedback">
+          <input wicket:id = "ipAddress" type="text"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td>
+          <p>
+          <br>
+          <input type="submit" value="Save Changes"/>
+          </p>
+        </td>
+      </tr>
+    </table>    
+  </form>
+</body>
+</html>

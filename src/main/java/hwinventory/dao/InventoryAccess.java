@@ -357,7 +357,14 @@ public class InventoryAccess extends HardwareInventoryDAO {
 		return listObject("TypeHardwareDevice");
 	}
 
-	
+	/**
+	 * getAllDevices
+	 * @return
+	 */
+	public List getAllDevices() {
+		return listObject("HardwareDevice");
+	}
+
 	/**
 	 * accessAnObjectInt
 	 * @param className
@@ -534,6 +541,17 @@ public class InventoryAccess extends HardwareInventoryDAO {
 		session.update(aType);
 		session.getTransaction().commit();
 	}
+	
+	/**
+	 * modifyHardwareDevice
+	 * @param aHardware
+	 */
+	public void modifyHardwareDevice(HardwareDevice aHardware) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		session.update(aHardware);
+		session.getTransaction().commit();
+	}
 
 	/**
 	 * modifyInventoryItem
@@ -598,6 +616,17 @@ public class InventoryAccess extends HardwareInventoryDAO {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		session.delete(aType);
+		session.getTransaction().commit();	
+	}
+
+	/**
+	 * removeHardwareDevice
+	 * @param aHardware
+	 */
+	public void removeHardwareDevice(HardwareDevice aHardware) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		session.delete(aHardware);
 		session.getTransaction().commit();	
 	}
 }
