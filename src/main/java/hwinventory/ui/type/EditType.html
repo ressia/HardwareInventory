@@ -1,33 +1,31 @@
 <html xmlns:wicket="http://wicket.apache.org/">
 <head>
-    <title>Edit Type</title>
+<title>Edit Type</title>
 </head>
 <body>
-	<h2>Edit Type</h2>
-  	<span wicket:id = "feedback"></span>
-  	<p>
-  	<form wicket:id = "editTypeForm">        
-   	 <table cellpadding="3">  
-      <tr>
-        <td align="left">User:</td>
-        <td wicket:id = "nameFeedback">
-          <input wicket:id = "nameType" type="text"/>
-        </td>
-	    <td wicket:id = "categoryFeedback">
-   			Category <select wicket:id="category"/><br/>
-        </td>
-      </tr>
-      <tr>
-        <td>
-        </td>
-        <td>
-          <p>
-          <br>
-          <input type="submit" value="Save Changes"/>
-          </p>
-        </td>
-      </tr>
-    </table>    
-  </form>
+<h2>Edit Type</h2>
+<span wicket:id="feedback"></span>
+<p>
+<form wicket:id="editTypeForm">
+<table cellpadding="3">
+	<tr>
+		<td align="left">Type name:</td>
+		<td wicket:id="nameFeedback">
+			<input wicket:id="nameType" type="text" /><br />
+		</td>
+	</tr>
+	<tr>
+		<td align="left">Category:</td>
+		<td wicket:id="categoryFeedback">
+			<select wicket:id="category"></select>
+		</td>
+	</tr>	
+	<tr>
+		<td>
+			<input type="submit" value="Save Changes" />
+		</td>
+	</tr>
+</table>
+</form>
 </body>
 </html>
