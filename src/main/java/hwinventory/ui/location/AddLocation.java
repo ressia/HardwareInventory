@@ -2,6 +2,7 @@ package hwinventory.ui.location;
 
 import hwinventory.dao.HardwareInventoryDAO;
 import hwinventory.ui.application.HardwareInventoryApplication;
+import hwinventory.ui.inventoryItem.AddInventoryItem;
 import hwinventory.ui.webpage.SecureWebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
@@ -30,9 +31,16 @@ public class AddLocation extends SecureWebPage {
     	public void onSubmit() {
     		LocationDraft aLocationDraftModel = (LocationDraft)getModelObject();
     		HardwareInventoryDAO aDAO = ((HardwareInventoryApplication)getApplication()).getSystem().getHardwareInventoryDAO();
-    		aDAO.addLocation(aLocationDraftModel.getName());
-    		LocationView aLocationView = new LocationView();
-    		setResponsePage(aLocationView);
+    		try {
+	    		aDAO.addLocation(aLocationDraftModel.getName());
+	    		LocationView aLocationView = new LocationView();
+	    		setResponsePage(aLocationView);
+	    	} catch(Exception e) {
+    			String errMsg = getLocalizer().getString(
+    					"login.errors.invalidCredentials ", AddLocation.this,"Unable to add the location.");
+    			error(errMsg);
+    		}
+
     	}
 	}
     

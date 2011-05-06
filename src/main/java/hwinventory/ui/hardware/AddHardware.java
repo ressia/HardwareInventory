@@ -4,6 +4,7 @@ package hwinventory.ui.hardware;
 import hwinventory.dao.HardwareInventoryDAO;
 import hwinventory.domain.TypeHardwareDevice;
 import hwinventory.ui.application.HardwareInventoryApplication;
+import hwinventory.ui.inventoryItem.AddInventoryItem;
 import hwinventory.ui.webpage.SecureWebPage;
 
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -63,11 +64,17 @@ public class AddHardware extends SecureWebPage {
     	public void onSubmit() { 		
     		HardwareDraft aHardwareDraftModel = (HardwareDraft)getModelObject();
      		HardwareInventoryDAO aDAO = ((HardwareInventoryApplication)getApplication()).getSystem().getHardwareInventoryDAO();
-     		aDAO.addHardwareDevice(aHardwareDraftModel.getType(), aHardwareDraftModel.getDiskSize(), aHardwareDraftModel.getMemorySize()
-     				,aHardwareDraftModel.getIanNumber(), aHardwareDraftModel.getMacAddress(), aHardwareDraftModel.getSerialNumber()
-     				,aHardwareDraftModel.getIpAddress());
-     		HardwareView aHardwareView = new HardwareView();
-     		setResponsePage(aHardwareView);
+     		try {
+	     		aDAO.addHardwareDevice(aHardwareDraftModel.getType(), aHardwareDraftModel.getDiskSize(), aHardwareDraftModel.getMemorySize()
+	     				,aHardwareDraftModel.getIanNumber(), aHardwareDraftModel.getMacAddress(), aHardwareDraftModel.getSerialNumber()
+	     				,aHardwareDraftModel.getIpAddress());
+	     		HardwareView aHardwareView = new HardwareView();
+	     		setResponsePage(aHardwareView);
+	    	} catch(Exception e) {
+    			String errMsg = getLocalizer().getString(
+    					"login.errors.invalidCredentials ", AddHardware.this,"Unable to add the hardware device.");
+    			error(errMsg);
+    		}	
     	}
 	}  
 }

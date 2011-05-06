@@ -1,6 +1,8 @@
 package hwinventory;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import hwinventory.dao.InventoryAccess;
@@ -11,6 +13,7 @@ public class InventoryMain {
 	public static void main(String[] args) {
 		
 		InventoryAccess anInventoryAccess = new InventoryAccess();
+		SimpleDateFormat aDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
 		int aScgNumber = 20;
 		int anIanNumber = 3000;
@@ -26,11 +29,11 @@ public class InventoryMain {
 		String aNameLocation = "Office Luis";
 		String aNameUser = "Luis";
 		float aPrice = (float) 2000.20;
-		Calendar anInventoryDate = new GregorianCalendar(2011,10,20);
+		Calendar anInventoryDate = new GregorianCalendar();
 		String aBudget = "BUD111";
 		String aSerialNumber = "W111111111";
 		String aGuarantee = "Dell 222222";
-		Calendar aGuaranteeEnd = new GregorianCalendar(2011,5,2);
+		Calendar aGuaranteeEnd = new GregorianCalendar();
 		String aNote = "Test 5";
 		
 		CategoryHardwareDevice aCategory = anInventoryAccess.addCategory(aNameCategory);

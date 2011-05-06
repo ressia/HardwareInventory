@@ -2,6 +2,7 @@ package hwinventory.ui.user;
 
 import hwinventory.dao.HardwareInventoryDAO;
 import hwinventory.ui.application.HardwareInventoryApplication;
+import hwinventory.ui.inventoryItem.AddInventoryItem;
 import hwinventory.ui.webpage.SecureWebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
@@ -30,9 +31,15 @@ public class AddUser extends SecureWebPage {
     	public void onSubmit() {
     		UserDraft aUserDraftModel = (UserDraft)getModelObject();
     		HardwareInventoryDAO aDAO = ((HardwareInventoryApplication)getApplication()).getSystem().getHardwareInventoryDAO();
-    		aDAO.addUser(aUserDraftModel.getName());
-    		UserView aUserView = new UserView();
-    		setResponsePage(aUserView);
+    		try {
+	    		aDAO.addUser(aUserDraftModel.getName());
+	    		UserView aUserView = new UserView();
+	    		setResponsePage(aUserView);
+	    	} catch(Exception e) {
+    			String errMsg = getLocalizer().getString(
+    					"login.errors.invalidCredentials ", AddUser.this,"Unable to add the user.");
+    			error(errMsg);
+    		}	    		
     	}
 	}
     

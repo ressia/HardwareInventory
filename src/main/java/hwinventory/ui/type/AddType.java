@@ -4,6 +4,7 @@ package hwinventory.ui.type;
 import hwinventory.dao.HardwareInventoryDAO;
 import hwinventory.domain.CategoryHardwareDevice;
 import hwinventory.ui.application.HardwareInventoryApplication;
+import hwinventory.ui.inventoryItem.AddInventoryItem;
 import hwinventory.ui.webpage.SecureWebPage;
 
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -48,9 +49,15 @@ public class AddType extends SecureWebPage {
     	public void onSubmit() { 		
     		TypeDraft aTypeDraftModel = (TypeDraft)getModelObject();
      		HardwareInventoryDAO aDAO = ((HardwareInventoryApplication)getApplication()).getSystem().getHardwareInventoryDAO();
-     		aDAO.addType(aTypeDraftModel.getName(), aTypeDraftModel.getCategory());
-     		TypeView aTypeView = new TypeView();
-     		setResponsePage(aTypeView);
+     		try {
+	     		aDAO.addType(aTypeDraftModel.getName(), aTypeDraftModel.getCategory());
+	     		TypeView aTypeView = new TypeView();
+	     		setResponsePage(aTypeView);
+	    	} catch(Exception e) {
+    			String errMsg = getLocalizer().getString(
+    					"login.errors.invalidCredentials ", AddType.this,"Unable to add the type's hardware.");
+    			error(errMsg);
+    		}	
     	}
 	}  
 }

@@ -17,7 +17,7 @@ public class InventoryItemDataView extends DataView {
 	
 		protected void populateItem(final Item item) { 
 			InventoryItem anInventoryItem = (InventoryItem) item.getModelObject();
-			SimpleDateFormat aDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+			SimpleDateFormat aDateFormat = new SimpleDateFormat("MM-dd-yyyy");
 			item.setModel(new CompoundPropertyModel(anInventoryItem));
 			item.add(new Label("hardwareDevice.type.nameType"));
 			item.add(new Label("hardwareDevice.diskSize"));
