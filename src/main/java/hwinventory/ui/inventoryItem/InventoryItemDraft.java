@@ -5,6 +5,7 @@ import hwinventory.domain.LocationItemInventory;
 import hwinventory.domain.User;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class InventoryItemDraft {
 
@@ -13,7 +14,7 @@ public class InventoryItemDraft {
 	private String nameItem;
 	private User user;
 	private LocationItemInventory location; 
-	private Calendar inventoryDate;
+	private Date inventoryDate;
 	private float price;
 	private String budget;
 	private String guarantee;
@@ -50,10 +51,15 @@ public class InventoryItemDraft {
 	public void setLocation(LocationItemInventory location) {
 		this.location = location;
 	}
-	public Calendar getInventoryDate() {
+	public Calendar getInventoryDateCalendar() {
+		Calendar aCalendar = Calendar.getInstance();
+		aCalendar.setTime(inventoryDate);
+		return aCalendar;
+	}
+	public Date getInventoryDate() {
 		return inventoryDate;
 	}
-	public void setInventoryDate(Calendar inventoryDate) {
+	public void setInventoryDate(Date inventoryDate) {
 		this.inventoryDate = inventoryDate;
 	}
 	public float getPrice() {

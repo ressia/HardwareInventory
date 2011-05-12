@@ -1,6 +1,7 @@
 package hwinventory.ui.inventoryItem;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import hwinventory.dao.HardwareInventoryDAO;
 import hwinventory.domain.HardwareDevice;
@@ -12,7 +13,6 @@ import hwinventory.ui.webpage.SecureWebPage;
 import org.apache.wicket.datetime.DateConverter;
 import org.apache.wicket.datetime.PatternDateConverter;
 import org.apache.wicket.datetime.markup.html.form.DateTextField;
-import org.apache.wicket.extensions.yui.calendar.DateField;
 import org.apache.wicket.extensions.yui.calendar.DatePicker;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
@@ -21,6 +21,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 
 public class AddInventoryItem extends SecureWebPage {
 	
@@ -74,11 +75,17 @@ public class AddInventoryItem extends SecureWebPage {
     	DropDownChoice aLocationList = new DropDownChoice("location", aDAO.getAllLocations(), choiceRendererLocation);
     	aLocationList.setRequired(true);
     	form.add(aLocationList);
-    	CompoundPropertyModel aInventoryDateModel = new CompoundPropertyModel(aInventoryItemDraft.getInventoryDate());
-     	DateTextField aItemDate = new DateTextField("inventoryDate", aInventoryDateModel, new PatternDateConverter("MM/dd/yyyy",true));
+    	//CompoundPropertyModel aInventoryDateModel = new CompoundPropertyModel(aInventoryItemDraft);
+    	PropertyModel aInventoryDateModel = new PropertyModel(aInventoryItemDraft,"inventoryDate");
+    	DateTextField aItemDate = new DateTextField("inventoryDate", aInventoryDateModel, new PatternDateConverter("MM/dd/yyyy",true));
     	aItemDate.setRequired(true);
-    	aItemDate.add(new DatePicker());
+    	
+    	DatePicker datePicker = new DatePicker();
+        datePicker.setShowOnFieldClick(true);
+        aItemDate.add(datePicker);
     	form.add(aItemDate);
+    	//add(new DatePicker("dateFieldPicker", dateField));
+    	
     	TextField aPrice = new TextField("price");
     	form.add(aPrice);
     	TextField aBudget = new TextField("budget");
@@ -102,13 +109,13 @@ public class AddInventoryItem extends SecureWebPage {
     	public void onSubmit() { 		
     		InventoryItemDraft anItemDraftModel = (InventoryItemDraft)getModelObject();
      		HardwareInventoryDAO aDAO = ((HardwareInventoryApplication)getApplication()).getSystem().getHardwareInventoryDAO();
-    		try {
+     		try {
 	     		aDAO.addInventoryItem(anItemDraftModel.getHardwareDevice()
 	     				, anItemDraftModel.getScgNumber()
 	     				, anItemDraftModel.getNameItem()
 	     				, anItemDraftModel.getUser()
 	     				, anItemDraftModel.getLocation()
-	     				, anItemDraftModel.getInventoryDate()
+	     				, anItemDraftModel.getInventoryDateCalendar()
 	     				, anItemDraftModel.getPrice()
 	     				, anItemDraftModel.getBudget()
 	     				, anItemDraftModel.getGuarantee()
