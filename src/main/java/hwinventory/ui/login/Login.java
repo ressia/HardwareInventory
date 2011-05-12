@@ -58,7 +58,7 @@ public class Login extends WebPage {
 		}
 		
 		public final boolean authenticate(final String username, final String password) {
-			if ("wicket".equalsIgnoreCase(username) && "wicket".equalsIgnoreCase(password))
+			if ("w".equalsIgnoreCase(username) && "w".equalsIgnoreCase(password))
 				return true; 
 			else
 				return false;

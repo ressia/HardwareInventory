@@ -19,6 +19,7 @@ public class InventoryItemDraft {
 	private String guarantee;
 	private Calendar guaranteeDate;
 	private String note;
+	
 	public HardwareDevice getHardwareDevice() {
 		return hardwareDevice;
 	}

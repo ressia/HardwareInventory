@@ -1,7 +1,6 @@
 package hwinventory.ui.inventoryItem;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat;
 
 import hwinventory.dao.HardwareInventoryDAO;
 import hwinventory.domain.HardwareDevice;
@@ -10,6 +9,10 @@ import hwinventory.domain.User;
 import hwinventory.ui.application.HardwareInventoryApplication;
 import hwinventory.ui.webpage.SecureWebPage;
 
+import org.apache.wicket.datetime.DateConverter;
+import org.apache.wicket.datetime.PatternDateConverter;
+import org.apache.wicket.datetime.markup.html.form.DateTextField;
+import org.apache.wicket.extensions.yui.calendar.DateField;
 import org.apache.wicket.extensions.yui.calendar.DatePicker;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
@@ -18,9 +21,6 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
-import org.hibernate.type.CalendarType;
-
-import sun.util.resources.CalendarData;
 
 public class AddInventoryItem extends SecureWebPage {
 	
@@ -42,7 +42,7 @@ public class AddInventoryItem extends SecureWebPage {
     				return (device.getType().getNameType());
     		}
     	};
-    	DropDownChoice aDeviceList = new DropDownChoice("hardwareDevice", aInventoryItemDraftModel, aDAO.getAllDevices(), choiceRendererDevice);
+    	DropDownChoice aDeviceList = new DropDownChoice("hardwareDevice", aDAO.getAllDevices(), choiceRendererDevice);
     	aDeviceList.setRequired(true);
     	form.add(aDeviceList);
        	TextField aScgNumber = new TextField("scgNumber");
@@ -74,7 +74,8 @@ public class AddInventoryItem extends SecureWebPage {
     	DropDownChoice aLocationList = new DropDownChoice("location", aDAO.getAllLocations(), choiceRendererLocation);
     	aLocationList.setRequired(true);
     	form.add(aLocationList);
-     	TextField aItemDate = new TextField("inventoryDate");
+    	CompoundPropertyModel aInventoryDateModel = new CompoundPropertyModel(aInventoryItemDraft.getInventoryDate());
+     	DateTextField aItemDate = new DateTextField("inventoryDate", aInventoryDateModel, new PatternDateConverter("MM/dd/yyyy",true));
     	aItemDate.setRequired(true);
     	aItemDate.add(new DatePicker());
     	form.add(aItemDate);
@@ -84,9 +85,10 @@ public class AddInventoryItem extends SecureWebPage {
     	form.add(aBudget);
     	TextField aGuarantee = new TextField("guarantee");
     	form.add(aGuarantee);
-    	TextField aGuaranteeDate = new TextField("guaranteeDate");
-    	aGuaranteeDate.add(new DatePicker());
-    	form.add(aGuaranteeDate);
+    	CompoundPropertyModel aGuaranteeDateModel = new CompoundPropertyModel(aInventoryItemDraft.getGuaranteeDate());
+     	DateTextField aGuaranteeDate = new DateTextField("guaranteeDate", aGuaranteeDateModel, new PatternDateConverter("MM/dd/yyyy",true));
+     	aGuaranteeDate.add(new DatePicker());
+     	form.add(aGuaranteeDate);
     	TextField aNote = new TextField("note");
     	form.add(aNote);
     }	
@@ -101,11 +103,16 @@ public class AddInventoryItem extends SecureWebPage {
     		InventoryItemDraft anItemDraftModel = (InventoryItemDraft)getModelObject();
      		HardwareInventoryDAO aDAO = ((HardwareInventoryApplication)getApplication()).getSystem().getHardwareInventoryDAO();
     		try {
-	     		aDAO.addInventoryItem(anItemDraftModel.getHardwareDevice(), anItemDraftModel.getScgNumber()
-	     				, anItemDraftModel.getNameItem(), anItemDraftModel.getUser()
-	     				, anItemDraftModel.getLocation(), anItemDraftModel.getInventoryDate()
-	     				, anItemDraftModel.getPrice(), anItemDraftModel.getBudget()
-	     				, anItemDraftModel.getGuarantee(), anItemDraftModel.getGuaranteeDate()
+	     		aDAO.addInventoryItem(anItemDraftModel.getHardwareDevice()
+	     				, anItemDraftModel.getScgNumber()
+	     				, anItemDraftModel.getNameItem()
+	     				, anItemDraftModel.getUser()
+	     				, anItemDraftModel.getLocation()
+	     				, anItemDraftModel.getInventoryDate()
+	     				, anItemDraftModel.getPrice()
+	     				, anItemDraftModel.getBudget()
+	     				, anItemDraftModel.getGuarantee()
+	     				, anItemDraftModel.getGuaranteeDate()
 	     				, anItemDraftModel.getNote());
 	     		InventoryItemView aInventoryItemView = new InventoryItemView();
 	     		setResponsePage(aInventoryItemView);
