@@ -24,7 +24,6 @@ public final class EditLocation extends SecureWebPage {
 			super(id, new CompoundPropertyModel(aLocation));
 
 			final TextField nameLocation = new TextField("nameLocation");
-			nameLocation.setRequired(true);
 			final FormComponentFeedbackBorder nameFeedback = new FormComponentFeedbackBorder(
 					"nameFeedback");
 			add(nameFeedback);

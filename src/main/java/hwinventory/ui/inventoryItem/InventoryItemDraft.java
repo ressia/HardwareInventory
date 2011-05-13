@@ -4,7 +4,6 @@ import hwinventory.domain.HardwareDevice;
 import hwinventory.domain.LocationItemInventory;
 import hwinventory.domain.User;
 
-import java.util.Calendar;
 import java.util.Date;
 
 public class InventoryItemDraft {
@@ -61,11 +60,13 @@ public class InventoryItemDraft {
 		this.location = location;
 	}
 
+	/**
 	public Calendar getInventoryDateCalendar() {
 		Calendar aCalendar = Calendar.getInstance();
 		aCalendar.setTime(inventoryDate);
 		return aCalendar;
 	}
+	**/
 
 	public Date getInventoryDate() {
 		return inventoryDate;
@@ -99,11 +100,13 @@ public class InventoryItemDraft {
 		this.guarantee = guarantee;
 	}
 
+	/**
 	public Calendar getGuaranteeDateCalendar() {
 		Calendar aCalendar = Calendar.getInstance();
 		aCalendar.setTime(guaranteeDate);
 		return aCalendar;
 	}
+	**/
 
 	public Date getGuaranteeDate() {
 		return guaranteeDate;

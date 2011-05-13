@@ -109,11 +109,11 @@ public class AddInventoryItem extends SecureWebPage {
 	     				, anItemDraftModel.getNameItem()
 	     				, anItemDraftModel.getUser()
 	     				, anItemDraftModel.getLocation()
-	     				, anItemDraftModel.getInventoryDateCalendar()
+	     				, anItemDraftModel.getInventoryDate()
 	     				, anItemDraftModel.getPrice()
 	     				, anItemDraftModel.getBudget()
 	     				, anItemDraftModel.getGuarantee()
-	     				, anItemDraftModel.getGuaranteeDateCalendar()
+	     				, anItemDraftModel.getGuaranteeDate()
 	     				, anItemDraftModel.getNote());
 	     		InventoryItemView aInventoryItemView = new InventoryItemView();
 	     		setResponsePage(aInventoryItemView);

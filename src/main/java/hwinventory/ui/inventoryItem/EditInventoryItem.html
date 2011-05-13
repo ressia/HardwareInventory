@@ -1,0 +1,47 @@
+<html xmlns:wicket="http://wicket.apache.org/">
+<head>
+<title>Edit Inventory Item</title>
+</head>
+<body>
+	<h2>Edit Inventory Item</h2>
+	<span wicket:id="feedback"></span>
+	<p>
+	<form wicket:id="editItemForm">
+		<table cellpadding="3">
+			<tr>
+				<th>Type name <select wicket:id="hardwareDevice" /><br /></th>
+			</tr>
+			<tr>
+				<th>Item Name <input wicket:id="nameItem" type="text" /></th>
+			</tr>
+			<tr>
+				<th>User name <select wicket:id="user" /><br/></th>
+			</tr>
+			<tr>
+				<th>Location name <select wicket:id="location" /><br/></th>
+			</tr>
+			<tr>
+				<th>Date<input wicket:id="inventoryDate" type="text" /></th>
+			</tr>
+			<tr>
+				<th>Price<input wicket:id="price" type="text" /></th>
+			</tr>
+			<tr>
+				<th>Budget<input wicket:id="budget" type="text" /></th>
+			</tr>
+			<tr>
+				<th>Guarantee<input wicket:id="guarantee" type="text" /></th>
+			</tr>
+			<tr>
+				<th>Guarantee Date<input wicket:id="guaranteeDate" type="text" /></th>
+			</tr>
+			<tr>
+				<th>Notes<input wicket:id="note" type="text" /></th>
+			</tr>
+			<tr>
+				<th><input type="submit" value="Save Changes" /></th>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

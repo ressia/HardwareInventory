@@ -1,7 +1,7 @@
 package hwinventory.domain;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 
 public class InventoryItem implements Serializable {
 
@@ -11,19 +11,19 @@ public class InventoryItem implements Serializable {
 	private String nameItem;
 	private User user;
 	private LocationItemInventory location; 
-	private Calendar inventoryDate;
+	private Date inventoryDate;
 	private float price;
 	private String budget;
 	private String guarantee;
-	private Calendar guaranteeDate;
+	private Date guaranteeDate;
 	private String note;
 
 	public InventoryItem() {
 	}
 
 	public InventoryItem(HardwareDevice aHardwareDevice, int aScgNumber, String aNameItem, User anUser
-			, LocationItemInventory aLocation, Calendar anInventoryDate, float aPrice, String aBudget
-			, String aGuarantee, Calendar aguaranteeDate, String aNote) {
+			, LocationItemInventory aLocation, Date anInventoryDate, float aPrice, String aBudget
+			, String aGuarantee, Date aguaranteeDate, String aNote) {
 		hardwareDevice = aHardwareDevice;
 		scgNumber = aScgNumber;
 		nameItem = aNameItem;
@@ -85,11 +85,11 @@ public class InventoryItem implements Serializable {
 		this.location = location;
 	}
 
-	public Calendar getInventoryDate() {
+	public Date getInventoryDate() {
 		return inventoryDate;
 	}
 
-	public void setInventoryDate(Calendar inventoryDate) {
+	public void setInventoryDate(Date inventoryDate) {
 		this.inventoryDate = inventoryDate;
 	}
 
@@ -117,7 +117,7 @@ public class InventoryItem implements Serializable {
 		this.guarantee = guarantee;
 	}
 
-	public Calendar getGuaranteeDate() {
+	public Date getGuaranteeDate() {
 		return guaranteeDate;
 	}
 	
@@ -125,7 +125,7 @@ public class InventoryItem implements Serializable {
 		return guaranteeDate.toString();
 	}
 
-	public void setGuaranteeDate(Calendar guaranteeDate) {
+	public void setGuaranteeDate(Date guaranteeDate) {
 		this.guaranteeDate = guaranteeDate;
 	}
 	

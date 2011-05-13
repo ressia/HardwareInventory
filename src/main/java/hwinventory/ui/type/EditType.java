@@ -32,7 +32,6 @@ public final class EditType extends SecureWebPage {
 			 * edited values
 			 */
 			final TextField nameType = new TextField("nameType");
-			nameType.setRequired(true);
 			final FormComponentFeedbackBorder nameFeedback = new FormComponentFeedbackBorder(
 					"nameFeedback");
 			add(nameFeedback);
@@ -49,7 +48,6 @@ public final class EditType extends SecureWebPage {
 			};
 			DropDownChoice categoryList = new DropDownChoice("category",
 					aDAO.getAllCategories(), choiceRenderer);
-			categoryList.setRequired(true);
 			final FormComponentFeedbackBorder categoryFeedback = new FormComponentFeedbackBorder(
 					"categoryFeedback");
 			add(categoryFeedback);

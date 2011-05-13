@@ -24,7 +24,6 @@ public final class EditCategory extends SecureWebPage {
 			super(id, new CompoundPropertyModel(aCategory));
 
 			final TextField nameCategory = new TextField("nameCategory");
-			nameCategory.setRequired(true);
 			final FormComponentFeedbackBorder nameFeedback = new FormComponentFeedbackBorder(
 					"nameFeedback");
 			add(nameFeedback);

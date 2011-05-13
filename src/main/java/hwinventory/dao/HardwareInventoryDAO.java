@@ -7,7 +7,7 @@ import hwinventory.domain.LocationItemInventory;
 import hwinventory.domain.TypeHardwareDevice;
 import hwinventory.domain.User;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public abstract class HardwareInventoryDAO {
@@ -26,9 +26,9 @@ public abstract class HardwareInventoryDAO {
 
 	public abstract void addInventoryItem(HardwareDevice aHardwareDevice,
 			int aScgNumber, String aNameItem, User aUser,
-			LocationItemInventory aLocation, Calendar anInventoryDate,
+			LocationItemInventory aLocation, Date anInventoryDate,
 			float aPrice, String aBudget, String aGuarantee,
-			Calendar aguaranteeDate, String aNote);
+			Date aGuaranteeDate, String aNote);
 
 	/*public abstract void saveCategory(CategoryHardwareDevice aCategory);
 

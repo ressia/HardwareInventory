@@ -8,7 +8,7 @@ import hwinventory.domain.LocationItemInventory;
 import hwinventory.domain.TypeHardwareDevice;
 import hwinventory.domain.User;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -115,9 +115,9 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	 */
 	public void addInventoryItem(HardwareDevice aHardwareDevice,
 			int aScgNumber, String aNameItem, User aUser,
-			LocationItemInventory aLocation, Calendar anInventoryDate,
+			LocationItemInventory aLocation, Date anInventoryDate,
 			float aPrice, String aBudget, String aGuarantee,
-			Calendar aGuaranteeDate, String aNote) {
+			Date aGuaranteeDate, String aNote) {
 		InventoryItem anInventoryItem = getAnInventoryItem(aScgNumber);
 		if (anInventoryItem == null) {
 			anInventoryItem = new InventoryItem(aHardwareDevice, aScgNumber,

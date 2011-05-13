@@ -43,7 +43,6 @@ public final class EditHardware extends SecureWebPage {
 			};
 			DropDownChoice typeList = new DropDownChoice("type",
 					aDAO.getAllTypes(), choiceRenderer);
-			typeList.setRequired(true);
 			final FormComponentFeedbackBorder typeFeedback = new FormComponentFeedbackBorder(
 					"typeFeedback");
 			final TextField aDisk = new TextField("diskSize");
@@ -52,12 +51,6 @@ public final class EditHardware extends SecureWebPage {
 			final TextField aMac = new TextField("macAddress");
 			final TextField aSerial = new TextField("serialNumber");
 			final TextField anIp = new TextField("ipAddress");
-			aDisk.setRequired(true);
-			aMemory.setRequired(true);
-			anIam.setRequired(true);
-			aMac.setRequired(true);
-			aSerial.setRequired(true);
-			anIp.setRequired(true);
 			final FormComponentFeedbackBorder diskFeedback = new FormComponentFeedbackBorder(
 					"diskFeedback");
 			final FormComponentFeedbackBorder memoryFeedback = new FormComponentFeedbackBorder(

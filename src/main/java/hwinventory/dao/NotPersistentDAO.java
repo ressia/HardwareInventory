@@ -8,8 +8,8 @@ import hwinventory.domain.TypeHardwareDevice;
 import hwinventory.domain.User;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -68,9 +68,9 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 	@Override
 	public void addInventoryItem(HardwareDevice aHardwareDevice,
 			int aScgNumber, String aNameItem, User aUser,
-			LocationItemInventory aLocation, Calendar anInventoryDate,
+			LocationItemInventory aLocation, Date anInventoryDate,
 			float aPrice, String aBudget, String aGuarantee,
-			Calendar aguaranteeDate, String aNote) {
+			Date aguaranteeDate, String aNote) {
 		InventoryItem anItem = new InventoryItem(aHardwareDevice,
 				 								aScgNumber,  
 				 								aNameItem,  
