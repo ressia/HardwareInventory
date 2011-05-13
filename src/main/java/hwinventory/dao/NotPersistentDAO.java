@@ -70,7 +70,7 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 			int aScgNumber, String aNameItem, User aUser,
 			LocationItemInventory aLocation, Calendar anInventoryDate,
 			float aPrice, String aBudget, String aGuarantee,
-			Calendar aGuaranteeEnd, String aNote) {
+			Calendar aguaranteeDate, String aNote) {
 		InventoryItem anItem = new InventoryItem(aHardwareDevice,
 				 								aScgNumber,  
 				 								aNameItem,  
@@ -80,7 +80,7 @@ public class NotPersistentDAO extends HardwareInventoryDAO {
 				 								aPrice,  
 				 								aBudget,  
 				 								aGuarantee,
-				 								aGuaranteeEnd,
+				 								aguaranteeDate,
 				 								aNote);
 		items.add(anItem);
 	}

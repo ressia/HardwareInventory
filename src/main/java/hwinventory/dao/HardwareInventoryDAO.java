@@ -28,7 +28,7 @@ public abstract class HardwareInventoryDAO {
 			int aScgNumber, String aNameItem, User aUser,
 			LocationItemInventory aLocation, Calendar anInventoryDate,
 			float aPrice, String aBudget, String aGuarantee,
-			Calendar aGuaranteeEnd, String aNote);
+			Calendar aguaranteeDate, String aNote);
 
 	/*public abstract void saveCategory(CategoryHardwareDevice aCategory);
 

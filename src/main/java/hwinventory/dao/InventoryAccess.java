@@ -110,19 +110,19 @@ public class InventoryAccess extends HardwareInventoryDAO {
 	 * @param aPrice
 	 * @param aBudget
 	 * @param aGuarantee
-	 * @param aGuaranteeEnd
+	 * @param aguaranteeDate
 	 * @param aNote
 	 */
 	public void addInventoryItem(HardwareDevice aHardwareDevice,
 			int aScgNumber, String aNameItem, User aUser,
 			LocationItemInventory aLocation, Calendar anInventoryDate,
 			float aPrice, String aBudget, String aGuarantee,
-			Calendar aGuaranteeEnd, String aNote) {
+			Calendar aGuaranteeDate, String aNote) {
 		InventoryItem anInventoryItem = getAnInventoryItem(aScgNumber);
 		if (anInventoryItem == null) {
 			anInventoryItem = new InventoryItem(aHardwareDevice, aScgNumber,
 					aNameItem, aUser, aLocation, anInventoryDate, aPrice,
-					aBudget, aGuarantee, aGuaranteeEnd, aNote);
+					aBudget, aGuarantee, aGuaranteeDate, aNote);
 			saveInventoryItem(anInventoryItem);
 		}
 	}
@@ -282,7 +282,7 @@ public class InventoryAccess extends HardwareInventoryDAO {
 		anInventoryItem.setScgNumber(anInventoryItem.getScgNumber());
 		anInventoryItem.setBudget(anInventoryItem.getBudget());
 		anInventoryItem.setGuarantee(anInventoryItem.getGuarantee());
-		anInventoryItem.setGuaranteeEnd(anInventoryItem.getGuaranteeEnd());
+		anInventoryItem.setGuaranteeDate(anInventoryItem.getGuaranteeDate());
 		anInventoryItem.setHardwareDevice(anInventoryItem.getHardwareDevice());
 		anInventoryItem.setInventoryDate(anInventoryItem.getInventoryDate());
 		anInventoryItem.setLocation(anInventoryItem.getLocation());

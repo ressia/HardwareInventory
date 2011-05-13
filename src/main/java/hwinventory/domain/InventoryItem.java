@@ -15,7 +15,7 @@ public class InventoryItem implements Serializable {
 	private float price;
 	private String budget;
 	private String guarantee;
-	private Calendar guaranteeEnd;
+	private Calendar guaranteeDate;
 	private String note;
 
 	public InventoryItem() {
@@ -23,7 +23,7 @@ public class InventoryItem implements Serializable {
 
 	public InventoryItem(HardwareDevice aHardwareDevice, int aScgNumber, String aNameItem, User anUser
 			, LocationItemInventory aLocation, Calendar anInventoryDate, float aPrice, String aBudget
-			, String aGuarantee, Calendar aGuaranteeEnd, String aNote) {
+			, String aGuarantee, Calendar aguaranteeDate, String aNote) {
 		hardwareDevice = aHardwareDevice;
 		scgNumber = aScgNumber;
 		nameItem = aNameItem;
@@ -33,7 +33,7 @@ public class InventoryItem implements Serializable {
 		price = aPrice;
 		budget = aBudget;
 		guarantee = aGuarantee;
-		guaranteeEnd = aGuaranteeEnd;
+		guaranteeDate = aguaranteeDate;
 		note = aNote;
 	}
 
@@ -117,16 +117,16 @@ public class InventoryItem implements Serializable {
 		this.guarantee = guarantee;
 	}
 
-	public Calendar getGuaranteeEnd() {
-		return guaranteeEnd;
+	public Calendar getGuaranteeDate() {
+		return guaranteeDate;
 	}
 	
-	public String getGuaranteeEndAsString() {
-		return guaranteeEnd.toString();
+	public String getGuaranteeDateAsString() {
+		return guaranteeDate.toString();
 	}
 
-	public void setGuaranteeEnd(Calendar guaranteeEnd) {
-		this.guaranteeEnd = guaranteeEnd;
+	public void setGuaranteeDate(Calendar guaranteeDate) {
+		this.guaranteeDate = guaranteeDate;
 	}
 	
 	public String getNote() {
@@ -145,7 +145,7 @@ public class InventoryItem implements Serializable {
 		result = prime * result
 				+ ((guarantee == null) ? 0 : guarantee.hashCode());
 		result = prime * result
-				+ ((guaranteeEnd == null) ? 0 : guaranteeEnd.hashCode());
+				+ ((guaranteeDate == null) ? 0 : guaranteeDate.hashCode());
 		result = prime * result
 				+ ((hardwareDevice == null) ? 0 : hardwareDevice.hashCode());
 		result = prime * result
@@ -181,10 +181,10 @@ public class InventoryItem implements Serializable {
 				return false;
 		} else if (!guarantee.equals(other.guarantee))
 			return false;
-		if (guaranteeEnd == null) {
-			if (other.guaranteeEnd != null)
+		if (guaranteeDate == null) {
+			if (other.guaranteeDate != null)
 				return false;
-		} else if (!guaranteeEnd.equals(other.guaranteeEnd))
+		} else if (!guaranteeDate.equals(other.guaranteeDate))
 			return false;
 		if (hardwareDevice == null) {
 			if (other.hardwareDevice != null)

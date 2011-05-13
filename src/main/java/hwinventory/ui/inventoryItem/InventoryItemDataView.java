@@ -1,8 +1,6 @@
 package hwinventory.ui.inventoryItem;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 import hwinventory.domain.InventoryItem;
 
@@ -43,12 +41,12 @@ public class InventoryItemDataView extends DataView {
 			item.add(new Label("price"));
 			item.add(new Label("budget"));
 			aDate = null;
-			if (anInventoryItem.getGuaranteeEnd() != null) { 
-				aDate = aDateFormat.format(anInventoryItem.getGuaranteeEnd().getTime()); 
+			if (anInventoryItem.getGuaranteeDate() != null) { 
+				aDate = aDateFormat.format(anInventoryItem.getGuaranteeDate().getTime()); 
 			} else {
 				aDate = "";
 			}
-			item.add(new Label("guaranteeEnd", aDate ));
+			item.add(new Label("guaranteeDate", aDate ));
 			item.add(new Label("guarantee"));
 			item.add(new Label("note"));
 		}

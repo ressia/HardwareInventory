@@ -1,8 +1,5 @@
 package hwinventory.ui.inventoryItem;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import hwinventory.dao.HardwareInventoryDAO;
 import hwinventory.domain.HardwareDevice;
 import hwinventory.domain.LocationItemInventory;
@@ -10,7 +7,6 @@ import hwinventory.domain.User;
 import hwinventory.ui.application.HardwareInventoryApplication;
 import hwinventory.ui.webpage.SecureWebPage;
 
-import org.apache.wicket.datetime.DateConverter;
 import org.apache.wicket.datetime.PatternDateConverter;
 import org.apache.wicket.datetime.markup.html.form.DateTextField;
 import org.apache.wicket.extensions.yui.calendar.DatePicker;
@@ -75,27 +71,25 @@ public class AddInventoryItem extends SecureWebPage {
     	DropDownChoice aLocationList = new DropDownChoice("location", aDAO.getAllLocations(), choiceRendererLocation);
     	aLocationList.setRequired(true);
     	form.add(aLocationList);
-    	//CompoundPropertyModel aInventoryDateModel = new CompoundPropertyModel(aInventoryItemDraft);
     	PropertyModel aInventoryDateModel = new PropertyModel(aInventoryItemDraft,"inventoryDate");
     	DateTextField aItemDate = new DateTextField("inventoryDate", aInventoryDateModel, new PatternDateConverter("MM/dd/yyyy",true));
     	aItemDate.setRequired(true);
-    	
     	DatePicker datePicker = new DatePicker();
-        datePicker.setShowOnFieldClick(true);
+        //datePicker.setShowOnFieldClick(true);
         aItemDate.add(datePicker);
     	form.add(aItemDate);
-    	//add(new DatePicker("dateFieldPicker", dateField));
-    	
     	TextField aPrice = new TextField("price");
     	form.add(aPrice);
     	TextField aBudget = new TextField("budget");
     	form.add(aBudget);
     	TextField aGuarantee = new TextField("guarantee");
     	form.add(aGuarantee);
-    	CompoundPropertyModel aGuaranteeDateModel = new CompoundPropertyModel(aInventoryItemDraft.getGuaranteeDate());
-     	DateTextField aGuaranteeDate = new DateTextField("guaranteeDate", aGuaranteeDateModel, new PatternDateConverter("MM/dd/yyyy",true));
-     	aGuaranteeDate.add(new DatePicker());
-     	form.add(aGuaranteeDate);
+     	PropertyModel aGuaranteeDateModel = new PropertyModel(aInventoryItemDraft,"guaranteeDate");
+    	DateTextField aGuaranteeDate = new DateTextField("guaranteeDate", aGuaranteeDateModel, new PatternDateConverter("MM/dd/yyyy",true));
+    	DatePicker dateGuaranteePicker = new DatePicker();
+        //dateGuaranteePicker.setShowOnFieldClick(true);
+        aGuaranteeDate.add(dateGuaranteePicker);
+    	form.add(aGuaranteeDate);    	
     	TextField aNote = new TextField("note");
     	form.add(aNote);
     }	
@@ -119,7 +113,7 @@ public class AddInventoryItem extends SecureWebPage {
 	     				, anItemDraftModel.getPrice()
 	     				, anItemDraftModel.getBudget()
 	     				, anItemDraftModel.getGuarantee()
-	     				, anItemDraftModel.getGuaranteeDate()
+	     				, anItemDraftModel.getGuaranteeDateCalendar()
 	     				, anItemDraftModel.getNote());
 	     		InventoryItemView aInventoryItemView = new InventoryItemView();
 	     		setResponsePage(aInventoryItemView);

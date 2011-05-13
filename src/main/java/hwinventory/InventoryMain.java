@@ -33,7 +33,7 @@ public class InventoryMain {
 		String aBudget = "BUD111";
 		String aSerialNumber = "W111111111";
 		String aGuarantee = "Dell 222222";
-		Calendar aGuaranteeEnd = new GregorianCalendar();
+		Calendar aguaranteeDate = new GregorianCalendar();
 		String aNote = "Test 5";
 		
 		CategoryHardwareDevice aCategory = anInventoryAccess.addCategory(aNameCategory);
@@ -49,7 +49,7 @@ public class InventoryMain {
 		
 		anInventoryAccess.addInventoryItem(aHardwareDevice, aScgNumber, aNameItem, anUser,
 				aLocation, anInventoryDate, aPrice, aBudget, aGuarantee,
-				aGuaranteeEnd, aNote);
+				aguaranteeDate, aNote);
 		
 		/**
 		anInventoryAccess.modifyCategory(aNameCategory, aNewNameCategory);
@@ -57,7 +57,7 @@ public class InventoryMain {
 		anInventoryAccess.modifyInventoryItem(aScgNumber, anIanNumber, aNameCategory,
 				aNameItem, anIpAddress, aMacAddress, aNameType, aDiskSize,
 				aMemorySize, aNameLocation, aNameUser, aPrice, anInventoryDate,
-				aBudget, aSerialNumber, aGuarantee, aGuaranteeEnd, aNote);
+				aBudget, aSerialNumber, aGuarantee, aguaranteeDate, aNote);
 		
 		anInventoryAccess.removeInventoryItem(aScgNumber);
 		**/
