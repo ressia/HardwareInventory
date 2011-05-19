@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="hwinventory.domain">
+
+    <class name="InventoryItem" table="hw_items"> 
+
+        <id name="idItem" column="ITEM_ID">
+            <generator class="native"/>
+        </id>
+        
+        <property name="scgNumber" column="ITEM_SCG_NUM"/>
+        <property name="nameItem" column="ITEM_NAME"/>
+        <property name="inventoryDate" column="INVENTORY_DATE"/>
+    	<property name="price" column="ITEM_PRICE"/>
+    	<property name="budget" column="ITEM_BUDGET"/>
+    	<property name="guarantee" column="ITEM_GUARANTEE"/>
+    	<property name="guaranteeDate" column="ITEM_GUARANTEE_END"/>
+    	<property name="note" column="ITEM_NOTE"/>
+    	
+        <many-to-one name="user" class="User" column="USER_ID" lazy="false" not-null="true"/>
+        <many-to-one name="hardwareDevice" class="HardwareDevice" column="DEVICE_ID" lazy="false" not-null="true"/>
+        <many-to-one name="location" class="LocationItemInventory" column="LOCATION_ID" lazy="false" not-null="true"/>
+   
+	</class>
+
+</hibernate-mapping>
